@@ -3,241 +3,328 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Mis XV - Arianis</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
 }
 
-body {
-  font-family: Georgia, "Times New Roman", serif;
-  background: #e8f3df;
-  color: #4d5f42;
-  overflow-x: hidden;
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  background:#e8f3df;
+  color:#4d5f42;
+  overflow-x:hidden;
 }
 
-.screen {
-  min-height: 100vh;
-  width: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 25px 15px;
-  position: relative;
-  overflow: hidden;
+/* =========================
+   PÁGINAS
+========================= */
+
+.screen{
+  min-height:100vh;
+  width:100%;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px 15px;
+  position:relative;
+  overflow:hidden;
 }
 
-.screen.active {
-  display: flex;
-  animation: aparecer 1s ease;
+.screen.active{
+  display:flex;
+  animation:entrada 1s ease;
 }
 
-.contenido {
-  width: min(92vw, 620px);
-  padding: 32px 20px;
-  border: 2px solid #c6a85b;
-  border-radius: 28px;
-  background: rgba(255,255,255,.38);
-  box-shadow: 0 0 35px rgba(198,168,91,.25);
-  position: relative;
-  z-index: 2;
+.contenido{
+  width:min(92vw,620px);
+  padding:34px 22px;
+  border:2px solid #c6a85b;
+  border-radius:28px;
+  background:rgba(255,255,255,.38);
+  box-shadow:0 0 35px rgba(198,168,91,.25);
+  position:relative;
+  z-index:5;
 }
 
-h1 {
-  color: #a88b3e;
-  font-size: clamp(42px, 12vw, 75px);
-  margin: 10px 0;
+h1{
+  color:#a88b3e;
+  font-size:clamp(42px,12vw,75px);
+  margin:10px 0;
 }
 
-h2 {
-  color: #a88b3e;
-  font-size: clamp(26px, 7vw, 43px);
+h2{
+  color:#a88b3e;
+  font-size:clamp(26px,7vw,43px);
 }
 
-p {
-  font-size: 18px;
-  line-height: 1.7;
+p{
+  font-size:18px;
+  line-height:1.7;
 }
 
-.dorado {
-  color: #a88b3e;
+.dorado{
+  color:#a88b3e;
 }
 
-/* CORAZÓN VERDE */
-.corazon {
-  font-size: 65px;
-  display: block;
-  margin: 0 auto 12px;
-  animation: latido 1.8s infinite;
+/* =========================
+   CORAZONES VERDES
+========================= */
+
+.corazon{
+  font-size:62px;
+  display:block;
+  margin:0 auto 12px;
+  animation:latido 1.7s infinite;
 }
 
-/* SOBRE CENTRADO */
-.sobre-area {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 25px auto;
+/* Corazones decorativos */
+.corazon-decorativo{
+  position:fixed;
+  color:#6f9f62;
+  font-size:22px;
+  z-index:2;
+  pointer-events:none;
+  animation:flotar 4s ease-in-out infinite;
 }
 
-.sobre-caja {
-  position: relative;
-  width: min(300px, 82vw);
-  height: 205px;
-  cursor: pointer;
-  perspective: 800px;
+.c1{left:7%;top:18%;}
+.c2{right:8%;top:25%;animation-delay:1s;}
+.c3{left:12%;bottom:20%;animation-delay:1.7s;}
+.c4{right:12%;bottom:16%;animation-delay:2.4s;}
+
+/* =========================
+   SOBRE
+========================= */
+
+.sobre-area{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:30px auto;
 }
 
-.sobre {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background: #f8f3df;
-  border: 3px solid #c6a85b;
-  border-radius: 9px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+.sobre-caja{
+  width:min(310px,82vw);
+  height:210px;
+  position:relative;
+  margin:0 auto;
+  cursor:pointer;
+  perspective:900px;
 }
 
-.solapa {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 103px;
-  background: #eee5c8;
-  border-bottom: 3px solid #c6a85b;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transform-origin: top center;
-  transition: transform 1s ease;
-  z-index: 3;
+.sobre{
+  width:100%;
+  height:100%;
+  position:relative;
+  background:#f8f3df;
+  border:3px solid #c6a85b;
+  border-radius:10px;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+  overflow:visible;
 }
 
-.sobre.abierto .solapa {
-  transform: rotateX(180deg);
+/* Parte del sobre */
+.sobre:before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    145deg,
+    transparent 49%,
+    #d8c47e 50%,
+    transparent 51%
+  );
+  opacity:.45;
 }
 
-/* CORAZÓN DEL SELLO */
-.sello {
-  position: absolute;
-  left: 50%;
-  top: 103px;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #79a66a;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  z-index: 4;
-  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+/* Solapa */
+.solapa{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:108px;
+  background:#eee5c8;
+  border-bottom:3px solid #c6a85b;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center;
+  transition:transform 1s ease;
+  z-index:6;
 }
 
-.instruccion {
-  color: #668957;
-  font-size: 19px;
-  animation: pulso 1.8s infinite;
+.sobre.abierto .solapa{
+  transform:rotateX(180deg);
 }
 
-/* DESTELLOS */
-.destello {
-  position: fixed;
-  width: 7px;
-  height: 7px;
-  background: #d8bd61;
-  border-radius: 50%;
-  pointer-events: none;
-  animation: destellar 2.5s ease-in-out infinite;
-  z-index: 1;
+/* Corazón verde del sello */
+.sello{
+  position:absolute;
+  left:50%;
+  top:108px;
+  transform:translate(-50%,-50%);
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  background:#76a968;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:31px;
+  z-index:8;
+  box-shadow:0 4px 14px rgba(0,0,0,.2);
 }
 
-.destello:nth-child(1) { left: 10%; top: 20%; }
-.destello:nth-child(2) { left: 82%; top: 18%; animation-delay: .6s; }
-.destello:nth-child(3) { left: 18%; top: 75%; animation-delay: 1s; }
-.destello:nth-child(4) { left: 88%; top: 70%; animation-delay: 1.5s; }
-.destello:nth-child(5) { left: 50%; top: 10%; animation-delay: .3s; }
-.destello:nth-child(6) { left: 60%; top: 85%; animation-delay: 1.8s; }
-
-/* BOTÓN MÚSICA */
-.musica {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 20;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 2px solid #c6a85b;
-  background: #fffdf5;
-  color: #8c7130;
-  font-size: 22px;
-  cursor: pointer;
-  box-shadow: 0 5px 18px rgba(0,0,0,.15);
+.instruccion{
+  color:#668957;
+  font-size:19px;
+  margin-top:8px;
+  animation:pulso 1.8s infinite;
 }
 
-.boton {
-  border: 2px solid #b79745;
-  background: #fffdf5;
-  color: #7b6632;
-  border-radius: 30px;
-  padding: 14px 28px;
-  font-size: 18px;
-  font-family: Georgia, serif;
-  cursor: pointer;
-  margin-top: 20px;
-  box-shadow: 0 5px 18px rgba(0,0,0,.12);
+/* =========================
+   DESTELLOS
+========================= */
+
+.destello{
+  position:fixed;
+  width:8px;
+  height:8px;
+  background:#d8bd61;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:1;
+  animation:destellar 2.5s ease-in-out infinite;
 }
 
-@keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: scale(.94) translateY(20px);
+.destello:after{
+  content:"✦";
+  position:absolute;
+  left:-5px;
+  top:-11px;
+  color:#c6a85b;
+  font-size:17px;
+}
+
+.d1{left:8%;top:13%;}
+.d2{left:86%;top:17%;animation-delay:.5s;}
+.d3{left:16%;top:70%;animation-delay:1s;}
+.d4{left:87%;top:72%;animation-delay:1.5s;}
+.d5{left:48%;top:8%;animation-delay:.8s;}
+.d6{left:62%;top:88%;animation-delay:1.8s;}
+.d7{left:30%;top:90%;animation-delay:1.2s;}
+.d8{left:72%;top:42%;animation-delay:2s;}
+
+/* =========================
+   BOTONES
+========================= */
+
+.boton{
+  border:2px solid #b79745;
+  background:#fffdf5;
+  color:#7b6632;
+  border-radius:30px;
+  padding:14px 28px;
+  font-size:18px;
+  font-family:Georgia,"Times New Roman",serif;
+  cursor:pointer;
+  margin-top:20px;
+  box-shadow:0 5px 18px rgba(0,0,0,.12);
+  transition:transform .25s;
+}
+
+.boton:active{
+  transform:scale(.96);
+}
+
+/* =========================
+   MÚSICA
+========================= */
+
+.musica{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:30;
+  width:53px;
+  height:53px;
+  border-radius:50%;
+  border:2px solid #c6a85b;
+  background:#fffdf5;
+  color:#8c7130;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 5px 18px rgba(0,0,0,.15);
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes entrada{
+  from{
+    opacity:0;
+    transform:scale(.94) translateY(20px);
   }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
   }
 }
 
-@keyframes latido {
-  0%, 100% {
-    transform: scale(1);
+@keyframes latido{
+  0%,100%{
+    transform:scale(1);
   }
-  50% {
-    transform: scale(1.15);
-  }
-}
-
-@keyframes pulso {
-  0%, 100% {
-    opacity: .65;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.04);
+  50%{
+    transform:scale(1.14);
   }
 }
 
-@keyframes destellar {
-  0%, 100% {
-    opacity: .15;
-    transform: scale(.5);
+@keyframes pulso{
+  0%,100%{
+    opacity:.65;
   }
-  50% {
-    opacity: 1;
-    transform: scale(1.8);
+  50%{
+    opacity:1;
+    transform:scale(1.04);
+  }
+}
+
+@keyframes destellar{
+  0%,100%{
+    opacity:.15;
+    transform:scale(.5);
+  }
+  50%{
+    opacity:1;
+    transform:scale(1.8);
+  }
+}
+
+@keyframes flotar{
+  0%,100%{
+    transform:translateY(0);
+    opacity:.55;
+  }
+  50%{
+    transform:translateY(-14px);
+    opacity:1;
   }
 }
 </style>
@@ -245,21 +332,36 @@ p {
 
 <body>
 
-<div class="destello"></div>
-<div class="destello"></div>
-<div class="destello"></div>
-<div class="destello"></div>
-<div class="destello"></div>
-<div class="destello"></div>
+<!-- CORAZONES VERDES -->
+<div class="corazon-decorativo c1">💚</div>
+<div class="corazon-decorativo c2">💚</div>
+<div class="corazon-decorativo c3">💚</div>
+<div class="corazon-decorativo c4">💚</div>
 
+<!-- DESTELLOS -->
+<div class="destello d1"></div>
+<div class="destello d2"></div>
+<div class="destello d3"></div>
+<div class="destello d4"></div>
+<div class="destello d5"></div>
+<div class="destello d6"></div>
+<div class="destello d7"></div>
+<div class="destello d8"></div>
+
+<!-- MÚSICA -->
 <audio id="musica" loop>
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <button class="musica" onclick="alternarMusica()">🎵</button>
 
-<!-- SOBRE -->
+
+<!-- =========================
+     SOBRE
+========================= -->
+
 <section class="screen active" id="sobre">
+
   <div class="contenido">
 
     <div class="corazon">💚</div>
@@ -267,12 +369,19 @@ p {
     <h2>Una invitación especial...</h2>
 
     <div class="sobre-area">
+
       <div class="sobre-caja" onclick="abrirSobre()">
+
         <div class="sobre" id="sobreCaja">
+
           <div class="solapa"></div>
+
           <div class="sello">💚</div>
+
         </div>
+
       </div>
+
     </div>
 
     <div class="instruccion">
@@ -280,32 +389,55 @@ p {
     </div>
 
   </div>
+
 </section>
 
-<!-- PORTADA -->
+
+<!-- =========================
+     PORTADA
+========================= -->
+
 <section class="screen" id="pagina1">
+
   <div class="contenido">
+
     <div class="corazon">💚</div>
-    <p class="dorado">Con mucha ilusión quiero compartir contigo...</p>
+
+    <p class="dorado">
+      Con mucha ilusión quiero compartir contigo...
+    </p>
+
     <h1>Mis XV</h1>
+
     <h2>Arianis</h2>
+
     <p>✨ Una noche para recordar ✨</p>
 
     <button class="boton" onclick="siguiente(2)">
       CONTINUAR ✨
     </button>
+
   </div>
+
 </section>
 
-<!-- INVITACIÓN -->
+
+<!-- =========================
+     INVITACIÓN
+========================= -->
+
 <section class="screen" id="pagina2">
+
   <div class="contenido">
+
     <div class="corazon">💚</div>
+
     <h2>Estás invitado</h2>
 
     <p>
-      Hay momentos que se convierten en recuerdos para toda la vida,
-      y quiero compartir uno de los más especiales contigo.
+      Hay momentos que se convierten en recuerdos
+      para toda la vida, y quiero compartir uno de
+      los más especiales contigo.
     </p>
 
     <p class="dorado">
@@ -315,17 +447,31 @@ p {
     <button class="boton" onclick="siguiente(3)">
       CONTINUAR ✨
     </button>
+
   </div>
+
 </section>
 
-<!-- FECHA -->
+
+<!-- =========================
+     FECHA
+========================= -->
+
 <section class="screen" id="pagina3">
+
   <div class="contenido">
+
     <div class="corazon">💚</div>
+
     <h2>La fecha</h2>
 
-    <p class="dorado">10 de octubre de 2026</p>
-    <p>🕞 3:30 p.m.</p>
+    <p class="dorado">
+      10 de octubre de 2026
+    </p>
+
+    <p>
+      🕞 3:30 p.m.
+    </p>
 
     <p>
       📍 Salón comunal<br>
@@ -335,19 +481,29 @@ p {
     <button class="boton" onclick="siguiente(4)">
       CONTINUAR ✨
     </button>
+
   </div>
+
 </section>
 
-<!-- AGRADECIMIENTO -->
+
+<!-- =========================
+     AGRADECIMIENTO
+========================= -->
+
 <section class="screen" id="pagina4">
+
   <div class="contenido">
+
     <div class="corazon">💚</div>
+
     <h2>Gracias por ser parte</h2>
 
     <p>
-      Tu presencia hará que este día sea todavía más especial.
-      Gracias por acompañarme y formar parte de este recuerdo
-      que guardaré siempre en mi corazón.
+      Tu presencia hará que este día sea todavía
+      más especial. Gracias por acompañarme y
+      formar parte de este recuerdo que guardaré
+      siempre en mi corazón.
     </p>
 
     <p class="dorado">
@@ -358,115 +514,203 @@ p {
     <button class="boton" onclick="siguiente(5)">
       CONTINUAR ✨
     </button>
+
   </div>
+
 </section>
 
-<!-- DETALLES -->
+
+<!-- =========================
+     DETALLES
+========================= -->
+
 <section class="screen" id="pagina5">
+
   <div class="contenido">
+
     <div class="corazon">💚</div>
+
     <h2>Un pequeño detalle</h2>
 
-    <p>🎁 <strong>Lluvia de sobres</strong></p>
+    <p>
+      🎁 <strong>Lluvia de sobres</strong>
+    </p>
 
     <p>
-      Lo más importante para mí es compartir este momento contigo. ✨
+      Lo más importante para mí es compartir
+      este momento contigo. ✨
     </p>
 
     <button class="boton" onclick="siguiente(6)">
       CONTINUAR ✨
     </button>
+
   </div>
+
 </section>
 
-<!-- CONFIRMACIÓN -->
+
+<!-- =========================
+     CONFIRMACIÓN
+========================= -->
+
 <section class="screen" id="pagina6">
+
   <div class="contenido">
+
     <div class="corazon">💚</div>
+
     <h2>¿Nos acompañas?</h2>
 
     <p>
-      Me encantaría saber si podrás compartir conmigo
-      esta noche tan especial. 💚
+      Me encantaría saber si podrás compartir
+      conmigo esta noche tan especial. 💚
     </p>
 
-    <button class="boton"
-      onclick="window.open('https://wa.me/50662999872?text=Hola%20Arianis%20%F0%9F%92%97%20quiero%20confirmar%20mi%20asistencia%20a%20tus%20XV.','_blank')">
+    <button
+      class="boton"
+      onclick="window.open(
+      'https://wa.me/50662999872?text=Hola%20Arianis%20💗%20quiero%20confirmar%20mi%20asistencia%20a%20tus%20XV.',
+      '_blank')">
+
       💌 CONFIRMAR ASISTENCIA
+
     </button>
 
     <br>
 
-    <button class="boton"
-      onclick="window.open('https://photos.app.goo.gl/PdC8juV8uxDQnrWB8','_blank')">
+    <button
+      class="boton"
+      onclick="window.open(
+      'https://photos.app.goo.gl/PdC8juV8uxDQnrWB8',
+      '_blank')">
+
       📸 ÁLBUM DE RECUERDOS
+
     </button>
 
-    <p class="dorado">✨ Te espero ✨</p>
+    <p class="dorado">
+      ✨ Te espero ✨
+    </p>
+
   </div>
+
 </section>
 
+
 <script>
+
 let musicaSonando = false;
 
-function abrirSobre() {
+/* Abrir sobre */
+
+function abrirSobre(){
+
   const caja = document.getElementById("sobreCaja");
 
   caja.classList.add("abierto");
 
-  setTimeout(() => {
+  setTimeout(function(){
+
     mostrarPagina(1);
+
     reproducirMusica();
-  }, 900);
+
+  },900);
+
 }
 
-function mostrarPagina(numero) {
-  document.querySelectorAll(".screen").forEach(pagina => {
+
+/* Cambiar página */
+
+function mostrarPagina(numero){
+
+  document.querySelectorAll(".screen").forEach(function(pagina){
+
     pagina.classList.remove("active");
+
   });
 
   const pagina = document.getElementById(
     numero === 0 ? "sobre" : "pagina" + numero
   );
 
-  if (pagina) {
+  if(pagina){
+
     pagina.classList.add("active");
-    window.scrollTo(0, 0);
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
   }
+
 }
 
-function siguiente(numero) {
+
+/* Continuar */
+
+function siguiente(numero){
+
   mostrarPagina(numero);
+
 }
 
-function reproducirMusica() {
+
+/* Música */
+
+function reproducirMusica(){
+
   const audio = document.getElementById("musica");
 
   audio.play()
-    .then(() => {
+    .then(function(){
+
       musicaSonando = true;
+
     })
-    .catch(() => {
+    .catch(function(){
+
       musicaSonando = false;
+
     });
+
 }
 
-function alternarMusica() {
+
+/* Botón de música */
+
+function alternarMusica(){
+
   const audio = document.getElementById("musica");
 
-  if (musicaSonando) {
+  if(musicaSonando){
+
     audio.pause();
+
     musicaSonando = false;
-  } else {
+
+  }else{
+
     audio.play()
-      .then(() => {
+      .then(function(){
+
         musicaSonando = true;
+
       })
-      .catch(() => {
-        alert("Agrega el archivo musica.mp3 a tu GitHub.");
+      .catch(function(){
+
+        alert(
+          "Agrega el archivo musica.mp3 junto a tu index.html en GitHub."
+        );
+
       });
+
   }
+
 }
+
 </script>
 
 </body>
