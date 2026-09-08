@@ -6,16 +6,11 @@
 
 <title>Mis XV · Arianis</title>
 
-<!-- LETRAS ELEGANTES -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================
-   BASE
-========================= */
 
 *{
     box-sizing:border-box;
@@ -23,388 +18,825 @@
     padding:0;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     min-height:100vh;
-
     background:
-    radial-gradient(
-        circle at 50% 0%,
-        #fffdf8 0%,
-        #f3f7ef 48%,
-        #e5eee3 100%
-    );
-
+        radial-gradient(circle at top,#fffdf8 0%,#f4f7f0 48%,#e4ede2 100%);
     color:#536456;
-
-    font-family:'Cormorant Garamond', serif;
-
+    font-family:"Cormorant Garamond",serif;
     overflow-x:hidden;
 }
 
-/* =========================
-   DESTELLOS MUY SUTILES
-========================= */
+/* DESTELLOS */
 
 .destello{
     position:fixed;
-
     width:3px;
     height:3px;
-
     border-radius:50%;
-
     background:#c7a957;
-
-    box-shadow:
-    0 0 8px rgba(199,169,87,.7);
-
-    opacity:.4;
-
-    animation:
-    brillo 5s ease-in-out infinite;
-
+    box-shadow:0 0 9px rgba(199,169,87,.8);
+    opacity:.35;
+    animation:brillo 4s ease-in-out infinite;
     z-index:1;
 }
 
 @keyframes brillo{
-
     0%,100%{
         opacity:.15;
         transform:scale(.7);
     }
 
     50%{
-        opacity:.65;
-        transform:scale(1.2);
+        opacity:.8;
+        transform:scale(1.5);
     }
-
 }
 
-/* =========================
-   SOBRE DE LUJO
-========================= */
+/* PANTALLA DEL SOBRE */
 
 #pantallaSobre{
-
     position:fixed;
-
     inset:0;
-
     z-index:50;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     background:
-    radial-gradient(
-        circle,
-        #fffdf8 0%,
-        #eef4eb 100%
-    );
-
+        radial-gradient(circle,#fffdf8 0%,#edf4ea 100%);
 }
 
 .intro{
-
     text-align:center;
-
     width:100%;
-
     padding:25px;
-
 }
 
 .intro-subtitulo{
-
     font-size:12px;
-
     letter-spacing:5px;
-
     text-transform:uppercase;
-
     color:#927b43;
-
-    margin-bottom:28px;
-
+    margin-bottom:22px;
 }
 
 .intro-nombre{
-
-    font-family:'Great Vibes',cursive;
-
-    font-size:42px;
-
+    font-family:"Great Vibes",cursive;
+    font-size:48px;
     color:#657865;
-
-    margin-bottom:30px;
-
+    margin-bottom:32px;
 }
 
-/* SOBRE */
+/* SOBRE ELEGANTE */
 
 .sobre{
-
     position:relative;
-
     width:310px;
     height:205px;
-
     margin:auto;
-
     cursor:pointer;
-
-    filter:
-    drop-shadow(
-        0 15px 22px rgba(60,75,60,.16)
-    );
-
+    filter:drop-shadow(0 15px 22px rgba(60,75,60,.16));
 }
-
-/* cuerpo */
 
 .cuerpo{
-
     position:absolute;
-
     left:0;
     bottom:0;
-
     width:100%;
     height:160px;
-
     background:#f7f0dd;
-
     border:1px solid #c8aa5b;
-
 }
 
-/* pliegues */
-
 .cuerpo:before{
-
     content:"";
-
     position:absolute;
-
     left:0;
     bottom:0;
-
     border-style:solid;
-
-    border-width:
-    82px 154px 0 0;
-
-    border-color:
-    #eee5cf transparent transparent transparent;
-
+    border-width:82px 154px 0 0;
+    border-color:#eee5cf transparent transparent transparent;
 }
 
 .cuerpo:after{
-
     content:"";
-
     position:absolute;
-
     right:0;
     bottom:0;
-
     border-style:solid;
-
-    border-width:
-    0 0 82px 154px;
-
-    border-color:
-    transparent transparent #eee5cf transparent;
-
+    border-width:0 0 82px 154px;
+    border-color:transparent transparent #eee5cf transparent;
 }
-
-/* tapa */
 
 .tapa{
-
     position:absolute;
-
     top:0;
     left:0;
-
     width:100%;
     height:112px;
-
     background:#f4ead0;
-
     border:1px solid #c8aa5b;
-
-    clip-path:
-    polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
-
+    clip-path:polygon(0 0,100% 0,50% 100%);
     transform-origin:top;
-
-    transition:
-    transform 1.1s ease;
-
+    transition:transform 1s ease;
     z-index:5;
-
 }
 
-/* sello elegante */
-
 .sello{
-
     position:absolute;
-
     top:69px;
     left:50%;
-
     transform:translateX(-50%);
-
     width:46px;
     height:46px;
-
     border-radius:50%;
-
-    background:
-    linear-gradient(
-        145deg,
-        #d9c17a,
-        #b7943f
-    );
-
-    border:
-    2px solid #f6e9bd;
-
+    background:linear-gradient(145deg,#d9c17a,#b7943f);
+    border:2px solid #f6e9bd;
     color:white;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     font-size:18px;
-
     z-index:8;
-
-    box-shadow:
-    0 3px 8px rgba(0,0,0,.12);
-
+    box-shadow:0 3px 8px rgba(0,0,0,.12);
 }
 
 .textoSobre{
-
     position:absolute;
-
     left:0;
     bottom:14px;
-
     width:100%;
-
     text-align:center;
-
     font-size:13px;
-
     letter-spacing:2px;
-
     color:#786943;
-
     z-index:10;
-
 }
 
 .sobre.abierto .tapa{
-
     transform:rotateX(180deg);
-
 }
 
-/* =========================
-   INVITACIÓN
-========================= */
+/* INVITACIÓN */
 
 #invitacion{
-
     display:none;
-
     min-height:100vh;
-
-    padding:
-    22px 13px;
-
+    padding:22px 13px;
     position:relative;
-
     z-index:3;
-
 }
 
 .contenedor{
-
     width:100%;
-
     max-width:570px;
-
     margin:auto;
-
 }
 
-/* =========================
-   TARJETAS
-========================= */
+/* PÁGINAS */
 
 .pagina{
-
     display:none;
-
-    min-height:
-    calc(100vh - 44px);
-
+    min-height:calc(100vh - 44px);
     position:relative;
-
-    padding:
-    55px 30px;
-
-    background:
-    rgba(255,254,249,.96);
-
-    border:
-    1px solid #c8aa5b;
-
-    outline:
-    1px solid rgba(200,170,91,.28);
-
+    padding:55px 30px;
+    background:rgba(255,254,249,.97);
+    border:1px solid #c8aa5b;
+    outline:1px solid rgba(200,170,91,.28);
     outline-offset:-10px;
-
-    box-shadow:
-    0 18px 45px
-    rgba(70,85,70,.12);
-
+    box-shadow:0 18px 45px rgba(70,85,70,.12);
     text-align:center;
-
-    animation:
-    entrada .7s ease;
-
 }
 
 .pagina.activa{
-
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
-
     align-items:center;
-
+    animation:entrada .5s ease;
 }
 
 @keyframes entrada{
-
     from{
-
         opacity:0;
+        transform:translateY(8px);
+    }
 
-        transform:
-        translateY(
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* TIPOGRAFÍA */
+
+.mini{
+    font-size:12px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:#927b43;
+    margin-bottom:18px;
+}
+
+.nombre{
+    font-family:"Great Vibes",cursive;
+    font-size:64px;
+    font-weight:400;
+    color:#617461;
+    line-height:1;
+}
+
+.xv{
+    font-size:78px;
+    font-weight:300;
+    letter-spacing:8px;
+    color:#bd9d4e;
+    margin:6px 0 15px;
+}
+
+h2{
+    font-family:"Great Vibes",cursive;
+    font-size:48px;
+    font-weight:400;
+    color:#617461;
+    line-height:1.2;
+    margin-bottom:18px;
+}
+
+p{
+    max-width:470px;
+    font-size:18px;
+    line-height:1.6;
+    margin:7px auto;
+}
+
+.linea{
+    width:85px;
+    height:1px;
+    background:#c8aa5b;
+    margin:17px auto 22px;
+}
+
+.adorno{
+    font-size:15px;
+    letter-spacing:9px;
+    color:#c8aa5b;
+    margin-bottom:22px;
+}
+
+.final{
+    margin-top:25px;
+    color:#c8aa5b;
+    letter-spacing:8px;
+    font-size:12px;
+}
+
+/* INFORMACIÓN */
+
+.info{
+    width:100%;
+    max-width:410px;
+    padding:14px 10px;
+    border-bottom:1px solid rgba(200,170,91,.35);
+}
+
+.info:last-of-type{
+    border-bottom:none;
+}
+
+.info-titulo{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:#987f46;
+    margin-bottom:4px;
+}
+
+.info-texto{
+    font-size:21px;
+    color:#526454;
+}
+
+/* LLUVIA DE SOBRES */
+
+.lluvia{
+    width:100%;
+    max-width:430px;
+    margin-top:18px;
+    padding:19px;
+    border:1px solid rgba(200,170,91,.55);
+    background:rgba(237,244,234,.55);
+}
+
+.lluvia-titulo{
+    font-family:"Great Vibes",cursive;
+    font-size:32px;
+    color:#8c753e;
+}
+
+.lluvia p{
+    font-size:16px;
+}
+
+/* ÁLBUM */
+
+.album{
+    width:100%;
+    max-width:450px;
+    padding:27px 22px;
+    border:1px solid rgba(200,170,91,.55);
+    background:linear-gradient(
+        145deg,
+        rgba(238,245,235,.8),
+        rgba(255,253,247,.96)
+    );
+}
+
+.album-titulo{
+    font-family:"Great Vibes",cursive;
+    font-size:36px;
+    color:#617461;
+    margin-bottom:10px;
+}
+
+.album-frase{
+    font-style:italic;
+    font-size:19px;
+    color:#667767;
+}
+
+.album p{
+    font-size:16px;
+    line-height:1.7;
+}
+
+/* BOTONES */
+
+.botones{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:27px;
+}
+
+button,
+.boton{
+    display:inline-block;
+    text-decoration:none;
+    border:none;
+    padding:12px 24px;
+    border-radius:2px;
+    background:#617461;
+    color:white;
+    font-family:"Cormorant Garamond",serif;
+    font-size:16px;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 4px 12px rgba(50,65,52,.12);
+}
+
+button:hover,
+.boton:hover{
+    background:#8c753e;
+    transform:translateY(-2px);
+}
+
+.dorado{
+    background:#bd9d4e;
+}
+
+/* CELULAR */
+
+@media(max-width:420px){
+
+    #invitacion{
+        padding:12px 9px;
+    }
+
+    .pagina{
+        min-height:calc(100vh - 24px);
+        padding:45px 22px;
+    }
+
+    .nombre{
+        font-size:54px;
+    }
+
+    .xv{
+        font-size:66px;
+    }
+
+    h2{
+        font-size:41px;
+    }
+
+    p{
+        font-size:17px;
+    }
+
+    .sobre{
+        width:285px;
+        height:195px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- DESTELLOS -->
+
+<div class="destello" style="top:12%;left:15%;"></div>
+<div class="destello" style="top:26%;left:83%;animation-delay:1s;"></div>
+<div class="destello" style="top:66%;left:12%;animation-delay:2s;"></div>
+<div class="destello" style="top:80%;left:88%;animation-delay:.7s;"></div>
+
+
+<!-- SOBRE -->
+
+<div id="pantallaSobre">
+
+    <div class="intro">
+
+        <div class="intro-subtitulo">
+            Una invitación especial
+        </div>
+
+        <div class="intro-nombre">
+            Arianis
+        </div>
+
+        <div class="sobre" id="sobre">
+
+            <div class="cuerpo"></div>
+
+            <div class="tapa"></div>
+
+            <div class="sello">
+                ✦
+            </div>
+
+            <div class="textoSobre">
+                TOCA PARA ABRIR
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- INVITACIÓN -->
+
+<div id="invitacion">
+
+<div class="contenedor">
+
+
+<!-- PÁGINA 1 -->
+
+<section class="pagina activa" id="pagina1">
+
+    <div class="adorno">─ ✦ ─</div>
+
+    <div class="mini">
+        Una noche para recordar
+    </div>
+
+    <div class="nombre">
+        Arianis
+    </div>
+
+    <div class="xv">
+        XV
+    </div>
+
+    <div class="linea"></div>
+
+    <p>
+        Con mucha ilusión quiero compartir
+        contigo uno de los momentos más
+        especiales de mi vida.
+    </p>
+
+    <p>
+        Espero que puedas acompañarme
+        en esta noche tan especial.
+    </p>
+
+    <div class="botones">
+
+        <button onclick="mostrarPagina(2)">
+            CONTINUAR
+        </button>
+
+    </div>
+
+    <div class="final">
+        ✦ ✦ ✦
+    </div>
+
+</section>
+
+
+<!-- PÁGINA 2 -->
+
+<section class="pagina" id="pagina2">
+
+    <div class="adorno">─ ✦ ─</div>
+
+    <h2>
+        Con mucho cariño
+    </h2>
+
+    <div class="linea"></div>
+
+    <p>
+        Los momentos más bonitos de la vida
+        se vuelven aún más especiales
+        cuando podemos compartirlos
+        con las personas que queremos.
+    </p>
+
+    <p>
+        Por eso, sería un verdadero placer
+        contar contigo en esta celebración.
+    </p>
+
+    <p>
+        Tu presencia será parte de un recuerdo
+        que guardaré para siempre.
+    </p>
+
+    <div class="botones">
+
+        <button onclick="mostrarPagina(1)">
+            ← Atrás
+        </button>
+
+        <button onclick="mostrarPagina(3)">
+            Continuar
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- PÁGINA 3 -->
+
+<section class="pagina" id="pagina3">
+
+    <div class="adorno">─ ✦ ─</div>
+
+    <h2>
+        Reserva la fecha
+    </h2>
+
+    <div class="linea"></div>
+
+    <div class="info">
+
+        <div class="info-titulo">
+            Fecha
+        </div>
+
+        <div class="info-texto">
+            10 de octubre de 2026
+        </div>
+
+    </div>
+
+    <div class="info">
+
+        <div class="info-titulo">
+            Hora
+        </div>
+
+        <div class="info-texto">
+            3:30 PM
+        </div>
+
+    </div>
+
+    <div class="info">
+
+        <div class="info-titulo">
+            Lugar
+        </div>
+
+        <div class="info-texto">
+            Urbanización La Melissa
+            <br>
+            Salón Comunal
+        </div>
+
+    </div>
+
+    <div class="lluvia">
+
+        <div class="lluvia-titulo">
+            Lluvia de sobres
+        </div>
+
+        <p>
+            Si deseas obsequiarme un detalle,
+            puedes hacerlo mediante lluvia de sobres.
+        </p>
+
+    </div>
+
+    <div class="botones">
+
+        <button onclick="mostrarPagina(2)">
+            ← Atrás
+        </button>
+
+        <button onclick="mostrarPagina(4)">
+            Continuar
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- PÁGINA 4 -->
+
+<section class="pagina" id="pagina4">
+
+    <div class="adorno">─ ✦ ─</div>
+
+    <h2>
+        Será un placer verte
+    </h2>
+
+    <div class="linea"></div>
+
+    <p>
+        Para mí sería muy especial
+        compartir esta noche contigo.
+    </p>
+
+    <p>
+        Confirma tu asistencia
+        haciendo clic en el botón.
+    </p>
+
+    <div class="botones">
+
+        <a
+            class="boton dorado"
+            href="https://wa.me/50662999872?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%2015%20a%C3%B1os%20de%20Arianis%F0%9F%92%9A%E2%9C%A8"
+            target="_blank"
+            rel="noopener"
+        >
+            Confirmar asistencia
+        </a>
+
+    </div>
+
+    <div class="botones">
+
+        <button onclick="mostrarPagina(3)">
+            ← Atrás
+        </button>
+
+        <button onclick="mostrarPagina(5)">
+            Ver álbum
+        </button>
+
+    </div>
+
+    <div class="final">
+        ✦
+    </div>
+
+</section>
+
+
+<!-- PÁGINA 5 -->
+
+<section class="pagina" id="pagina5">
+
+    <div class="adorno">─ ✦ ─</div>
+
+    <h2>
+        Una noche para guardar
+    </h2>
+
+    <div class="album">
+
+        <div class="album-titulo">
+            Nuestros recuerdos
+        </div>
+
+        <p class="album-frase">
+            Que cada fotografía conserve
+            un pedacito de esta noche mágica.
+        </p>
+
+        <p>
+            Comparte en este álbum las fotografías
+            que captures durante la celebración.
+        </p>
+
+        <p>
+            Entre todos podemos llenar este espacio
+            de sonrisas, momentos especiales
+            y recuerdos que quedarán para siempre.
+        </p>
+
+        <div class="botones">
+
+            <a
+                class="boton dorado"
+                href="https://photos.app.goo.gl/PdC8juV8uxDQnrWB8"
+                target="_blank"
+                rel="noopener"
+            >
+                Compartir fotos
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="botones">
+
+        <button onclick="mostrarPagina(4)">
+            ← Confirmación
+        </button>
+
+        <button onclick="mostrarPagina(1)">
+            Inicio
+        </button>
+
+    </div>
+
+    <div class="final">
+        ✦ ✦ ✦
+    </div>
+
+</section>
+
+</div>
+</div>
+
+
+<script>
+
+/* ABRIR SOBRE */
+
+document.getElementById("sobre").addEventListener("click", function(){
+
+    const sobre = document.getElementById("sobre");
+    const pantalla = document.getElementById("pantallaSobre");
+    const invitacion = document.getElementById("invitacion");
+
+    sobre.classList.add("abierto");
+
+    setTimeout(function(){
+
+        pantalla.style.display = "none";
+        invitacion.style.display = "block";
+
+    },1000);
+
+});
+
+
+/* CAMBIAR PÁGINAS */
+
+function mostrarPagina(numero){
+
+    const paginas = document.querySelectorAll(".pagina");
+
+    paginas.forEach(function(pagina){
+        pagina.classList.remove("activa");
+    });
+
+    const paginaSeleccionada =
+        document.getElementById("pagina" + numero);
+
+    if(paginaSeleccionada){
+
+        paginaSeleccionada.classList.add("activa");
+
+        window.scrollTo(0,0);
+    }
+}
+
+</script>
+
+</body>
+</html>
