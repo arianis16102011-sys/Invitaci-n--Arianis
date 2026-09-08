@@ -544,4 +544,93 @@ button:hover,
     <button onclick="mostrarPagina(1)">Inicio ✨</button>
   </div>
 
-  <div class="decor
+  <div class="decoracion">✦ ✦ ✦</div>
+
+</section>
+
+</div>
+</div>
+
+
+<!-- BOTÓN MÚSICA -->
+<button id="musicaBtn" onclick="controlarMusica()">♫</button>
+
+<audio id="musicaAudio" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* ABRIR SOBRE */
+function abrirSobre(){
+
+  const sobre = document.getElementById("sobre");
+
+  sobre.classList.add("abierto");
+
+  setTimeout(function(){
+
+    document.getElementById("pantallaSobre").style.display="none";
+
+    document.getElementById("invitacion").style.display="block";
+
+  },900);
+}
+
+
+/* CAMBIAR PÁGINAS */
+function mostrarPagina(numero){
+
+  document.querySelectorAll(".pagina").forEach(function(pagina){
+    pagina.classList.remove("activa");
+  });
+
+  const pagina = document.getElementById("pagina" + numero);
+
+  if(pagina){
+    pagina.classList.add("activa");
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+  }
+}
+
+
+/* MÚSICA */
+let reproduciendo = false;
+
+function controlarMusica(){
+
+  const audio = document.getElementById("musicaAudio");
+  const boton = document.getElementById("musicaBtn");
+
+  if(!reproduciendo){
+
+    audio.play()
+      .then(function(){
+
+        reproduciendo=true;
+        boton.innerHTML="🔊";
+
+      })
+      .catch(function(){
+
+        alert("Agrega el archivo musica.mp3 a tu repositorio de GitHub para poder escuchar la música.");
+
+      });
+
+  }else{
+
+    audio.pause();
+    reproduciendo=false;
+    boton.innerHTML="♫";
+
+  }
+}
+
+</script>
+
+</body>
+</html>
