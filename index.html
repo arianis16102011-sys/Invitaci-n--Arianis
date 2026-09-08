@@ -3,634 +3,1048 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mis 15 - Arianis</title>
+
+<title>Mis XV · Arianis</title>
 
 <style>
+
+/* =========================
+   ESTILO GENERAL
+========================= */
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-  font-family: Georgia, 'Times New Roman', serif;
-  background:linear-gradient(135deg,#eef8ef,#fffdf5,#e4f2e5);
-  color:#405447;
-  min-height:100vh;
-  overflow-x:hidden;
+    min-height:100vh;
+    font-family:Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at top, #f9fbf5 0%, #edf4eb 45%, #e5eee4 100%);
+    color:#46594b;
+    overflow-x:hidden;
 }
 
-/* DESTELLOS */
-.sparkle{
-  position:fixed;
-  width:5px;
-  height:5px;
-  background:#d4af37;
-  border-radius:50%;
-  box-shadow:0 0 10px #d4af37;
-  animation:brillar 2.5s infinite ease-in-out;
-  z-index:1;
+/* =========================
+   DESTELLOS SUTILES
+========================= */
+
+.destello{
+    position:fixed;
+    width:4px;
+    height:4px;
+    background:#c9a84e;
+    border-radius:50%;
+    box-shadow:0 0 7px rgba(201,168,78,.7);
+    animation:brillo 4s ease-in-out infinite;
+    z-index:1;
 }
 
-@keyframes brillar{
-  0%,100%{opacity:.2;transform:scale(.7)}
-  50%{opacity:1;transform:scale(1.5)}
+@keyframes brillo{
+    0%,100%{
+        opacity:.15;
+        transform:scale(.7);
+    }
+
+    50%{
+        opacity:.75;
+        transform:scale(1.2);
+    }
 }
 
-/* SOBRE */
+/* =========================
+   SOBRE
+========================= */
+
 #pantallaSobre{
-  position:fixed;
-  inset:0;
-  background:linear-gradient(135deg,#e8f5e8,#fffdf7);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:20;
+    position:fixed;
+    inset:0;
+    z-index:50;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        radial-gradient(circle at center,#fffdf7 0%,#edf4eb 100%);
+}
+
+.intro{
+    text-align:center;
+    color:#667767;
+    padding:20px;
+}
+
+.intro small{
+    display:block;
+    margin-bottom:22px;
+    letter-spacing:2px;
+    font-size:13px;
+    color:#8b7950;
 }
 
 .sobre{
-  width:300px;
-  height:210px;
-  position:relative;
-  cursor:pointer;
-  filter:drop-shadow(0 12px 20px rgba(0,0,0,.15));
+    position:relative;
+    width:310px;
+    height:205px;
+    margin:auto;
+    cursor:pointer;
+
+    filter:drop-shadow(0 12px 18px rgba(50,65,52,.16));
 }
 
-.cuerpoSobre{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:160px;
-  background:#f8f1dc;
-  border:3px solid #d4af37;
-  border-radius:5px;
-  overflow:hidden;
+.cuerpo{
+    position:absolute;
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:160px;
+
+    background:#f8f3e5;
+    border:1.5px solid #c9a84e;
+    border-radius:4px;
+
+    overflow:hidden;
 }
 
-.cuerpoSobre:before{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:0;
-  border-style:solid;
-  border-width:80px 150px 0 0;
-  border-color:#eadfbd transparent transparent transparent;
+.cuerpo:before{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+
+    border-style:solid;
+    border-width:82px 153px 0 0;
+    border-color:#eee5cd transparent transparent transparent;
 }
 
-.cuerpoSobre:after{
-  content:"";
-  position:absolute;
-  right:0;
-  bottom:0;
-  border-style:solid;
-  border-width:0 0 80px 150px;
-  border-color:transparent transparent #eadfbd transparent;
+.cuerpo:after{
+    content:"";
+    position:absolute;
+    right:0;
+    bottom:0;
+
+    border-style:solid;
+    border-width:0 0 82px 153px;
+    border-color:transparent transparent #eee5cd transparent;
 }
 
 .tapa{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:115px;
-  background:#f3e8c9;
-  border:3px solid #d4af37;
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  transform-origin:top;
-  transition:1s ease;
-  z-index:4;
+    position:absolute;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:112px;
+
+    background:#f5ecd4;
+    border:1.5px solid #c9a84e;
+
+    clip-path:polygon(0 0,100% 0,50% 100%);
+
+    transform-origin:top;
+    transition:1s ease;
+    z-index:5;
 }
 
 .sello{
-  position:absolute;
-  left:50%;
-  top:70px;
-  transform:translateX(-50%);
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  background:#d4af37;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:25px;
-  z-index:6;
-  box-shadow:0 3px 10px rgba(0,0,0,.2);
+    position:absolute;
+    top:69px;
+    left:50%;
+
+    width:48px;
+    height:48px;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+    background:#c9a84e;
+
+    color:#fffdf4;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:19px;
+
+    z-index:8;
+
+    box-shadow:0 3px 8px rgba(0,0,0,.15);
 }
 
 .textoSobre{
-  position:absolute;
-  bottom:18px;
-  width:100%;
-  text-align:center;
-  color:#806b32;
-  font-size:16px;
-  z-index:7;
+    position:absolute;
+    bottom:15px;
+    left:0;
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:13px;
+    letter-spacing:1px;
+    color:#756744;
+
+    z-index:10;
 }
 
 .sobre.abierto .tapa{
-  transform:rotateX(180deg);
+    transform:rotateX(180deg);
 }
 
-/* INVITACIÓN */
+/* =========================
+   INVITACIÓN
+========================= */
+
 #invitacion{
-  display:none;
-  min-height:100vh;
-  padding:25px 15px;
-  position:relative;
-  z-index:5;
+    display:none;
+    position:relative;
+    z-index:3;
+
+    min-height:100vh;
+    padding:25px 15px;
 }
 
 .contenedor{
-  max-width:600px;
-  margin:auto;
+    width:100%;
+    max-width:570px;
+    margin:auto;
 }
 
+/* =========================
+   PÁGINAS
+========================= */
+
 .pagina{
-  display:none;
-  min-height:calc(100vh - 50px);
-  background:rgba(255,255,250,.88);
-  border:2px solid #d4af37;
-  border-radius:25px;
-  padding:40px 25px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(73,93,73,.15);
-  animation:entrada .7s ease;
-  position:relative;
-  overflow:hidden;
+    display:none;
+
+    min-height:calc(100vh - 50px);
+
+    position:relative;
+
+    padding:50px 28px;
+
+    background:rgba(255,253,247,.94);
+
+    border:1px solid #c9a84e;
+
+    outline:1px solid rgba(201,168,78,.25);
+    outline-offset:-9px;
+
+    box-shadow:
+        0 15px 40px rgba(64,82,67,.12);
+
+    text-align:center;
+
+    animation:aparecer .65s ease;
 }
 
 .pagina.activa{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 
-@keyframes entrada{
-  from{
-    opacity:0;
-    transform:translateY(20px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
-.adornito{
-  color:#d4af37;
-  font-size:28px;
-  margin-bottom:15px;
+/* =========================
+   TIPOGRAFÍA
+========================= */
+
+.adorno{
+    color:#c9a84e;
+    font-size:18px;
+    letter-spacing:7px;
+    margin-bottom:22px;
+}
+
+.pequeno{
+    color:#8b7950;
+    font-size:13px;
+    letter-spacing:4px;
+    text-transform:uppercase;
 }
 
 h1{
-  font-size:48px;
-  color:#637c68;
-  margin:10px 0;
+    font-size:48px;
+    font-weight:normal;
+    letter-spacing:3px;
+    color:#5d735f;
+    margin:10px 0;
 }
 
 h2{
-  font-size:31px;
-  color:#637c68;
-  margin-bottom:20px;
+    font-size:29px;
+    font-weight:normal;
+    color:#5d735f;
+    margin-bottom:20px;
 }
 
 h3{
-  color:#8d7634;
-  font-size:23px;
-  margin:15px 0;
+    font-size:21px;
+    font-weight:normal;
+    color:#8b7440;
+    margin:15px 0;
 }
 
 p{
-  font-size:18px;
-  line-height:1.7;
-  margin:10px 0;
+    max-width:470px;
+    font-size:17px;
+    line-height:1.8;
+    margin:8px auto;
 }
 
 .nombre{
-  font-size:24px;
-  color:#806b32;
-  letter-spacing:3px;
+    color:#8b7440;
+    font-size:18px;
+    letter-spacing:6px;
 }
 
-.xv{
-  font-size:75px;
-  color:#d4af37;
-  margin:10px 0;
-  text-shadow:0 2px 5px rgba(212,175,55,.3);
+.numeroXV{
+    font-size:78px;
+    color:#c9a84e;
+    line-height:1;
+    margin:12px 0 18px;
+
+    text-shadow:
+        0 2px 8px rgba(201,168,78,.2);
 }
 
-.detalle{
-  margin:12px 0;
-  font-size:19px;
+.linea{
+    width:80px;
+    height:1px;
+    background:#c9a84e;
+    margin:18px auto;
 }
 
-.icono{
-  font-size:35px;
-  margin-bottom:5px;
+/* =========================
+   INFORMACIÓN
+========================= */
+
+.info{
+    width:100%;
+    max-width:400px;
+
+    margin:10px auto;
+
+    padding:15px;
+
+    border-bottom:1px solid rgba(201,168,78,.45);
 }
 
-/* BOTONES */
+.info:last-of-type{
+    border-bottom:none;
+}
+
+.info .icono{
+    font-size:22px;
+    margin-bottom:7px;
+}
+
+.info strong{
+    display:block;
+    font-size:18px;
+    font-weight:normal;
+    color:#526655;
+}
+
+/* =========================
+   LLUVIA DE SOBRES
+========================= */
+
+.lluvia{
+    width:100%;
+    max-width:430px;
+
+    margin:18px auto 5px;
+
+    padding:19px;
+
+    border:1px solid rgba(201,168,78,.65);
+
+    background:rgba(239,246,237,.65);
+}
+
+.lluvia-titulo{
+    color:#8b7440;
+    font-size:19px;
+    letter-spacing:1px;
+}
+
+.lluvia p{
+    font-size:15px;
+    line-height:1.6;
+}
+
+/* =========================
+   ÁLBUM
+========================= */
+
+.album{
+    width:100%;
+    max-width:450px;
+
+    padding:25px 20px;
+
+    border:1px solid rgba(201,168,78,.65);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(239,246,237,.8),
+            rgba(255,253,247,.95)
+        );
+}
+
+.album-icono{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.album-frase{
+    color:#5d735f;
+    font-style:italic;
+    font-size:18px;
+}
+
+.album p{
+    font-size:15px;
+    line-height:1.7;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
 .botones{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:12px;
-  margin-top:25px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:28px;
 }
 
 button,
 .boton{
-  border:none;
-  text-decoration:none;
-  display:inline-block;
-  padding:13px 22px;
-  border-radius:30px;
-  background:#637c68;
-  color:white;
-  font-family:Georgia,serif;
-  font-size:16px;
-  cursor:pointer;
-  transition:.3s;
-  box-shadow:0 4px 10px rgba(0,0,0,.12);
+    display:inline-block;
+
+    border:none;
+    text-decoration:none;
+
+    padding:12px 23px;
+
+    border-radius:2px;
+
+    background:#627664;
+    color:white;
+
+    font-family:Georgia,serif;
+    font-size:14px;
+    letter-spacing:.5px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 4px 12px rgba(50,65,52,.12);
 }
 
 button:hover,
 .boton:hover{
-  transform:translateY(-3px);
-  background:#806b32;
+    background:#8b7440;
+    transform:translateY(-2px);
 }
 
-.botonDorado{
-  background:#d4af37;
+.boton-dorado{
+    background:#c9a84e;
 }
 
-/* LLUVIA DE SOBRES */
-.lluvia{
-  margin-top:25px;
-  padding:20px;
-  border:1px solid #d4af37;
-  border-radius:18px;
-  background:rgba(239,247,237,.7);
-}
+/* =========================
+   MÚSICA
+========================= */
 
-.lluvia .sobreIcono{
-  font-size:38px;
-}
-
-.lluvia strong{
-  color:#806b32;
-  font-size:20px;
-}
-
-/* ALBUM */
-.album{
-  margin-top:20px;
-  padding:25px 18px;
-  border:1px solid #d4af37;
-  border-radius:20px;
-  background:linear-gradient(135deg,rgba(237,247,237,.8),rgba(255,253,245,.9));
-}
-
-.albumIcono{
-  font-size:48px;
-  margin-bottom:10px;
-}
-
-.fraseAlbum{
-  font-style:italic;
-  color:#637c68;
-  font-size:19px;
-}
-
-/* MÚSICA */
 #musicaBtn{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  padding:0;
-  z-index:30;
-  background:#d4af37;
-  font-size:20px;
+    position:fixed;
+
+    right:17px;
+    bottom:17px;
+
+    width:45px;
+    height:45px;
+
+    padding:0;
+
+    border-radius:50%;
+
+    background:#c9a84e;
+
+    font-size:18px;
+
+    z-index:100;
 }
 
-/* PIE */
-.decoracion{
-  margin-top:25px;
-  color:#d4af37;
-  letter-spacing:8px;
+/* =========================
+   DECORACIÓN FINAL
+========================= */
+
+.final{
+    color:#c9a84e;
+    letter-spacing:8px;
+    margin-top:25px;
+    font-size:14px;
 }
 
-@media(max-width:400px){
-  h1{font-size:40px}
-  h2{font-size:27px}
-  .xv{font-size:62px}
-  .pagina{padding:30px 18px}
+/* =========================
+   CELULARES
+========================= */
+
+@media(max-width:420px){
+
+    #invitacion{
+        padding:15px 10px;
+    }
+
+    .pagina{
+        min-height:calc(100vh - 30px);
+        padding:40px 22px;
+    }
+
+    h1{
+        font-size:40px;
+    }
+
+    h2{
+        font-size:26px;
+    }
+
+    .numeroXV{
+        font-size:65px;
+    }
+
+    p{
+        font-size:16px;
+    }
+
+    .sobre{
+        width:285px;
+        height:195px;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- DESTELLOS -->
-<div class="sparkle" style="top:10%;left:15%;"></div>
-<div class="sparkle" style="top:25%;left:80%;animation-delay:.5s;"></div>
-<div class="sparkle" style="top:60%;left:10%;animation-delay:1s;"></div>
-<div class="sparkle" style="top:75%;left:88%;animation-delay:1.5s;"></div>
-<div class="sparkle" style="top:45%;left:50%;animation-delay:.8s;"></div>
-<div class="sparkle" style="top:85%;left:35%;animation-delay:1.8s;"></div>
+<!-- =========================
+     DESTELLOS
+========================= -->
 
-<!-- SOBRE -->
+<div class="destello" style="top:12%;left:16%;"></div>
+<div class="destello" style="top:24%;left:84%;animation-delay:1s;"></div>
+<div class="destello" style="top:65%;left:12%;animation-delay:2s;"></div>
+<div class="destello" style="top:78%;left:87%;animation-delay:.5s;"></div>
+<div class="destello" style="top:44%;left:52%;animation-delay:1.5s;"></div>
+
+
+<!-- =========================
+     SOBRE
+========================= -->
+
 <div id="pantallaSobre">
-  <div class="sobre" id="sobre" onclick="abrirSobre()">
 
-    <div class="cuerpoSobre"></div>
+    <div class="intro">
 
-    <div class="tapa"></div>
+        <small>UNA INVITACIÓN ESPECIAL</small>
 
-    <div class="sello">✦</div>
+        <div
+            class="sobre"
+            id="sobre"
+            onclick="abrirSobre()"
+        >
 
-    <div class="textoSobre">
-      Toca el sobre para abrir mi invitación
+            <div class="cuerpo"></div>
+
+            <div class="tapa"></div>
+
+            <div class="sello">✦</div>
+
+            <div class="textoSobre">
+                Toca para abrir
+            </div>
+
+        </div>
+
     </div>
 
-  </div>
 </div>
 
-<!-- INVITACIÓN -->
+
+<!-- =========================
+     INVITACIÓN
+========================= -->
+
 <div id="invitacion">
 
 <div class="contenedor">
 
-<!-- PÁGINA 1 -->
+
+<!-- =========================
+     PÁGINA 1
+========================= -->
+
 <section class="pagina activa" id="pagina1">
 
-  <div class="adornito">✦ ✧ ✦</div>
+    <div class="adorno">✦ ─ ✦</div>
 
-  <div class="nombre">ARIANIS</div>
+    <div class="pequeno">
+        Una noche para recordar
+    </div>
 
-  <div class="xv">XV</div>
+    <div class="nombre">
+        ARIANIS
+    </div>
 
-  <h2>Una noche para recordar</h2>
+    <div class="numeroXV">
+        XV
+    </div>
 
-  <p>
-    Hay momentos que se convierten en recuerdos
-    para toda la vida...
-  </p>
-
-  <p>
-    Y me encantaría compartir uno de los más
-    especiales contigo.
-  </p>
-
-  <div class="decoracion">✦ ✦ ✦</div>
-
-  <div class="botones">
-    <button onclick="mostrarPagina(2)">CONTINUAR ✨</button>
-  </div>
-
-</section>
-
-
-<!-- PÁGINA 2 -->
-<section class="pagina" id="pagina2">
-
-  <div class="adornito">❦</div>
-
-  <h2>Con mucho cariño...</h2>
-
-  <p>
-    Quiero invitarte a celebrar conmigo
-    una noche llena de alegría, sueños,
-    momentos especiales y personas que
-    hacen mi vida más bonita.
-  </p>
-
-  <p>
-    Tu presencia será uno de los regalos
-    más especiales de esta noche.
-  </p>
-
-  <div class="botones">
-    <button onclick="mostrarPagina(1)">← Atrás</button>
-    <button onclick="mostrarPagina(3)">Continuar ✨</button>
-  </div>
-
-</section>
-
-
-<!-- PÁGINA 3 -->
-<section class="pagina" id="pagina3">
-
-  <div class="adornito">✦</div>
-
-  <h2>Reserva esta fecha</h2>
-
-  <div class="detalle">
-    <div class="icono">📅</div>
-    <strong>10 de octubre de 2026</strong>
-  </div>
-
-  <div class="detalle">
-    <div class="icono">🕞</div>
-    <strong>3:30 PM</strong>
-  </div>
-
-  <div class="detalle">
-    <div class="icono">📍</div>
-    <strong>Urbanización La Melissa</strong><br>
-    Salón Comunal
-  </div>
-
-  <div class="lluvia">
-
-    <div class="sobreIcono">💌</div>
-
-    <strong>Lluvia de sobres</strong>
+    <div class="linea"></div>
 
     <p>
-      Si deseas tener un detalle conmigo,
-      puedes hacerlo mediante lluvia de sobres.
-    </p>
-
-  </div>
-
-  <div class="botones">
-    <button onclick="mostrarPagina(2)">← Atrás</button>
-    <button onclick="mostrarPagina(4)">Continuar ✨</button>
-  </div>
-
-</section>
-
-
-<!-- PÁGINA 4 - CONFIRMACIÓN -->
-<section class="pagina" id="pagina4">
-
-  <div class="adornito">✦ 💚 ✦</div>
-
-  <h2>¿Nos acompañas?</h2>
-
-  <p>
-    Será una noche muy especial y me hará
-    muchísima ilusión contar contigo.
-  </p>
-
-  <p>
-    Por favor, confirma tu asistencia para
-    poder compartir juntos esta noche mágica.
-  </p>
-
-  <div class="botones">
-
-    <a
-      class="boton botonDorado"
-      href="https://wa.me/50662999872?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%2015%20a%C3%B1os%20de%20Arianis%F0%9F%92%9A%E2%9C%A8"
-      target="_blank">
-      💚 Confirmar asistencia
-    </a>
-
-  </div>
-
-  <div class="botones">
-    <button onclick="mostrarPagina(3)">← Atrás</button>
-    <button onclick="mostrarPagina(5)">📸 Ver álbum</button>
-  </div>
-
-</section>
-
-
-<!-- PÁGINA 5 - ÁLBUM -->
-<section class="pagina" id="pagina5">
-
-  <div class="adornito">✦ 📸 ✦</div>
-
-  <h2>Recuerdos de una noche mágica</h2>
-
-  <div class="album">
-
-    <div class="albumIcono">📸✨</div>
-
-    <p class="fraseAlbum">
-      “Cada fotografía guarda un instante,
-      y quiero que juntos llenemos este álbum
-      con todos los recuerdos de esta noche tan especial.”
+        Hay momentos que merecen ser celebrados
+        y recuerdos que queremos guardar para siempre.
     </p>
 
     <p>
-      Comparte tus fotos, risas y momentos favoritos
-      de esta celebración en nuestro álbum de recuerdos.
+        Me encantaría que formaras parte
+        de esta noche tan especial.
     </p>
 
     <div class="botones">
 
-      <a
-        class="boton botonDorado"
-        href="https://photos.app.goo.gl/PdC8juV8uxDQnrWB8"
-        target="_blank">
-        📸 Compartir fotos
-      </a>
+        <button onclick="mostrarPagina(2)">
+            CONTINUAR
+        </button>
 
     </div>
 
-  </div>
-
-  <div class="botones">
-    <button onclick="mostrarPagina(4)">← Confirmación</button>
-    <button onclick="mostrarPagina(1)">Inicio ✨</button>
-  </div>
-
-  <div class="decoracion">✦ ✦ ✦</div>
+    <div class="final">
+        ✦ ✦ ✦
+    </div>
 
 </section>
 
+
+<!-- =========================
+     PÁGINA 2
+========================= -->
+
+<section class="pagina" id="pagina2">
+
+    <div class="adorno">✦</div>
+
+    <h2>
+        Con mucho cariño
+    </h2>
+
+    <div class="linea"></div>
+
+    <p>
+        Quiero compartir contigo una noche llena
+        de alegría, ilusión y momentos especiales.
+    </p>
+
+    <p>
+        Tu presencia hará que esta celebración
+        sea todavía más bonita y memorable.
+    </p>
+
+    <p>
+        Gracias por acompañarme en una etapa
+        tan importante de mi vida.
+    </p>
+
+    <div class="botones">
+
+        <button onclick="mostrarPagina(1)">
+            ← Atrás
+        </button>
+
+        <button onclick="mostrarPagina(3)">
+            Continuar
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PÁGINA 3
+========================= -->
+
+<section class="pagina" id="pagina3">
+
+    <div class="adorno">✦ ─ ✦</div>
+
+    <h2>
+        Reserva la fecha
+    </h2>
+
+    <div class="linea"></div>
+
+
+    <div class="info">
+
+        <div class="icono">
+            ♢
+        </div>
+
+        <strong>
+            10 de octubre de 2026
+        </strong>
+
+    </div>
+
+
+    <div class="info">
+
+        <div class="icono">
+            ♢
+        </div>
+
+        <strong>
+            3:30 PM
+        </strong>
+
+    </div>
+
+
+    <div class="info">
+
+        <div class="icono">
+            ♢
+        </div>
+
+        <strong>
+            Urbanización La Melissa
+        </strong>
+
+        <span>
+            Salón Comunal
+        </span>
+
+    </div>
+
+
+    <!-- LLUVIA DE SOBRES -->
+
+    <div class="lluvia">
+
+        <div class="lluvia-titulo">
+            Lluvia de sobres
+        </div>
+
+        <p>
+            Si deseas tener un detalle conmigo,
+            puedes hacerlo mediante lluvia de sobres.
+        </p>
+
+    </div>
+
+
+    <div class="botones">
+
+        <button onclick="mostrarPagina(2)">
+            ← Atrás
+        </button>
+
+        <button onclick="mostrarPagina(4)">
+            Continuar
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PÁGINA 4 · CONFIRMACIÓN
+========================= -->
+
+<section class="pagina" id="pagina4">
+
+    <div class="adorno">
+        ✦
+    </div>
+
+    <h2>
+        ¿Nos acompañas?
+    </h2>
+
+    <div class="linea"></div>
+
+    <p>
+        Será un honor contar contigo en esta
+        noche tan especial.
+    </p>
+
+    <p>
+        Por favor, confirma tu asistencia
+        para poder esperarte y compartir
+        juntos este momento.
+    </p>
+
+
+    <div class="botones">
+
+        <a
+            class="boton boton-dorado"
+            href="https://wa.me/50662999872?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%2015%20a%C3%B1os%20de%20Arianis%F0%9F%92%9A%E2%9C%A8"
+            target="_blank"
+        >
+            Confirmar asistencia
+        </a>
+
+    </div>
+
+
+    <div class="botones">
+
+        <button onclick="mostrarPagina(3)">
+            ← Atrás
+        </button>
+
+        <button onclick="mostrarPagina(5)">
+            Álbum de recuerdos
+        </button>
+
+    </div>
+
+
+    <div class="final">
+        ✦
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PÁGINA 5 · ÁLBUM
+========================= -->
+
+<section class="pagina" id="pagina5">
+
+    <div class="adorno">
+        ✦ ─ ✦
+    </div>
+
+    <h2>
+        Recuerdos de esta noche
+    </h2>
+
+    <div class="album">
+
+        <div class="album-icono">
+            ♡
+        </div>
+
+        <p class="album-frase">
+            “Una noche especial merece quedar
+            guardada en pequeños momentos.”
+        </p>
+
+        <p>
+            Comparte las fotografías que captures
+            durante esta celebración y ayudemos a
+            llenar este álbum con recuerdos,
+            sonrisas y momentos inolvidables.
+        </p>
+
+        <div class="botones">
+
+            <a
+                class="boton boton-dorado"
+                href="https://photos.app.goo.gl/PdC8juV8uxDQnrWB8"
+                target="_blank"
+            >
+                Compartir fotos
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="botones">
+
+        <button onclick="mostrarPagina(4)">
+            ← Confirmación
+        </button>
+
+        <button onclick="mostrarPagina(1)">
+            Inicio
+        </button>
+
+    </div>
+
+
+    <div class="final">
+        ✦ ✦ ✦
+    </div>
+
+</section>
+
+
 </div>
 </div>
 
 
-<!-- BOTÓN MÚSICA -->
-<button id="musicaBtn" onclick="controlarMusica()">♫</button>
+<!-- =========================
+     MÚSICA
+========================= -->
 
-<audio id="musicaAudio" loop>
-  <source src="musica.mp3" type="audio/mpeg">
+<button
+    id="musicaBtn"
+    onclick="controlarMusica()"
+>
+    ♫
+</button>
+
+<audio
+    id="musicaAudio"
+    loop
+>
+    <source
+        src="musica.mp3"
+        type="audio/mpeg"
+    >
 </audio>
 
 
 <script>
 
-/* ABRIR SOBRE */
+/* =========================
+   ABRIR SOBRE
+========================= */
+
 function abrirSobre(){
 
-  const sobre = document.getElementById("sobre");
+    const sobre =
+        document.getElementById("sobre");
 
-  sobre.classList.add("abierto");
+    sobre.classList.add("abierto");
 
-  setTimeout(function(){
+    setTimeout(function(){
 
-    document.getElementById("pantallaSobre").style.display="none";
+        document
+            .getElementById("pantallaSobre")
+            .style.display = "none";
 
-    document.getElementById("invitacion").style.display="block";
+        document
+            .getElementById("invitacion")
+            .style.display = "block";
 
-  },900);
+    },900);
 }
 
 
-/* CAMBIAR PÁGINAS */
+/* =========================
+   CAMBIAR PÁGINAS
+========================= */
+
 function mostrarPagina(numero){
 
-  document.querySelectorAll(".pagina").forEach(function(pagina){
-    pagina.classList.remove("activa");
-  });
+    const paginas =
+        document.querySelectorAll(".pagina");
 
-  const pagina = document.getElementById("pagina" + numero);
+    paginas.forEach(function(pagina){
 
-  if(pagina){
-    pagina.classList.add("activa");
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
+        pagina.classList.remove("activa");
+
     });
-  }
+
+    const pagina =
+        document.getElementById("pagina" + numero);
+
+    if(pagina){
+
+        pagina.classList.add("activa");
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
 }
 
 
-/* MÚSICA */
+/* =========================
+   MÚSICA
+========================= */
+
 let reproduciendo = false;
 
 function controlarMusica(){
 
-  const audio = document.getElementById("musicaAudio");
-  const boton = document.getElementById("musicaBtn");
+    const audio =
+        document.getElementById("musicaAudio");
 
-  if(!reproduciendo){
+    const boton =
+        document.getElementById("musicaBtn");
 
-    audio.play()
-      .then(function(){
 
-        reproduciendo=true;
-        boton.innerHTML="🔊";
+    if(!reproduciendo){
 
-      })
-      .catch(function(){
+        audio.play()
+        .then(function(){
 
-        alert("Agrega el archivo musica.mp3 a tu repositorio de GitHub para poder escuchar la música.");
+            reproduciendo = true;
 
-      });
+            boton.innerHTML = "🔊";
 
-  }else{
+        })
+        .catch(function(){
 
-    audio.pause();
-    reproduciendo=false;
-    boton.innerHTML="♫";
+            alert(
+                "Para escuchar la música, agrega el archivo musica.mp3 a tu repositorio de GitHub."
+            );
 
-  }
+        });
+
+    }else{
+
+        audio.pause();
+
+        reproduciendo = false;
+
+        boton.innerHTML = "♫";
+
+    }
+
 }
 
 </script>
 
 </body>
-</html>
+  </html>
