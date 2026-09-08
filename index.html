@@ -10,12 +10,14 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
 }
 
 body {
-  margin: 0;
   font-family: Georgia, "Times New Roman", serif;
   background: #e8f3df;
   color: #4d5f42;
@@ -24,11 +26,12 @@ body {
 
 .screen {
   min-height: 100vh;
+  width: 100%;
   display: none;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 30px 20px;
+  padding: 25px 15px;
   position: relative;
   overflow: hidden;
 }
@@ -39,11 +42,11 @@ body {
 }
 
 .contenido {
-  width: min(92%, 650px);
-  padding: 35px 25px;
+  width: min(92vw, 620px);
+  padding: 32px 20px;
   border: 2px solid #c6a85b;
   border-radius: 28px;
-  background: rgba(255,255,255,.35);
+  background: rgba(255,255,255,.38);
   box-shadow: 0 0 35px rgba(198,168,91,.25);
   position: relative;
   z-index: 2;
@@ -51,17 +54,17 @@ body {
 
 h1 {
   color: #a88b3e;
-  font-size: clamp(40px, 11vw, 75px);
+  font-size: clamp(42px, 12vw, 75px);
   margin: 10px 0;
 }
 
 h2 {
   color: #a88b3e;
-  font-size: clamp(27px, 7vw, 45px);
+  font-size: clamp(26px, 7vw, 43px);
 }
 
 p {
-  font-size: 19px;
+  font-size: 18px;
   line-height: 1.7;
 }
 
@@ -69,36 +72,27 @@ p {
   color: #a88b3e;
 }
 
-.loto {
+/* CORAZÓN VERDE */
+.corazon {
   font-size: 65px;
-  animation: flotar 3s ease-in-out infinite;
+  display: block;
+  margin: 0 auto 12px;
+  animation: latido 1.8s infinite;
 }
 
-.boton {
-  border: 2px solid #b79745;
-  background: #fffdf5;
-  color: #7b6632;
-  border-radius: 30px;
-  padding: 14px 28px;
-  font-size: 18px;
-  font-family: Georgia, serif;
-  cursor: pointer;
-  margin-top: 20px;
-  box-shadow: 0 5px 18px rgba(0,0,0,.12);
-  transition: transform .25s, box-shadow .25s;
-}
-
-.boton:hover {
-  transform: scale(1.05);
-  box-shadow: 0 7px 25px rgba(0,0,0,.18);
-}
-
-/* SOBRE */
+/* SOBRE CENTRADO */
 .sobre-area {
-  position: relative;
-  width: 300px;
-  height: 210px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 25px auto;
+}
+
+.sobre-caja {
+  position: relative;
+  width: min(300px, 82vw);
+  height: 205px;
   cursor: pointer;
   perspective: 800px;
 }
@@ -106,27 +100,19 @@ p {
 .sobre {
   width: 100%;
   height: 100%;
+  position: relative;
   background: #f8f3df;
   border: 3px solid #c6a85b;
-  border-radius: 8px;
-  position: relative;
+  border-radius: 9px;
   box-shadow: 0 12px 30px rgba(0,0,0,.18);
-}
-
-.sobre::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(145deg, transparent 49%, #d8c47e 50%, transparent 51%);
-  opacity: .55;
 }
 
 .solapa {
   position: absolute;
-  top: 0;
   left: 0;
+  top: 0;
   width: 100%;
-  height: 105px;
+  height: 103px;
   background: #eee5c8;
   border-bottom: 3px solid #c6a85b;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
@@ -135,36 +121,36 @@ p {
   z-index: 3;
 }
 
-.sello {
-  position: absolute;
-  left: 50%;
-  top: 105px;
-  transform: translate(-50%, -50%);
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: #c6a85b;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  z-index: 4;
-  box-shadow: 0 4px 12px rgba(0,0,0,.2);
-}
-
 .sobre.abierto .solapa {
   transform: rotateX(180deg);
 }
 
+/* CORAZÓN DEL SELLO */
+.sello {
+  position: absolute;
+  left: 50%;
+  top: 103px;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #79a66a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  z-index: 4;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+
 .instruccion {
-  margin-top: 10px;
-  color: #8b7439;
+  color: #668957;
   font-size: 19px;
   animation: pulso 1.8s infinite;
 }
 
-/* DESTELLITOS */
+/* DESTELLOS */
 .destello {
   position: fixed;
   width: 7px;
@@ -183,7 +169,7 @@ p {
 .destello:nth-child(5) { left: 50%; top: 10%; animation-delay: .3s; }
 .destello:nth-child(6) { left: 60%; top: 85%; animation-delay: 1.8s; }
 
-/* BOTÓN DE MÚSICA */
+/* BOTÓN MÚSICA */
 .musica {
   position: fixed;
   right: 18px;
@@ -200,7 +186,19 @@ p {
   box-shadow: 0 5px 18px rgba(0,0,0,.15);
 }
 
-/* ANIMACIONES */
+.boton {
+  border: 2px solid #b79745;
+  background: #fffdf5;
+  color: #7b6632;
+  border-radius: 30px;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.12);
+}
+
 @keyframes aparecer {
   from {
     opacity: 0;
@@ -212,18 +210,28 @@ p {
   }
 }
 
-@keyframes flotar {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+@keyframes latido {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
 }
 
 @keyframes pulso {
-  0%,100% { opacity: .65; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.04); }
+  0%, 100% {
+    opacity: .65;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
 }
 
 @keyframes destellar {
-  0%,100% {
+  0%, 100% {
     opacity: .15;
     transform: scale(.5);
   }
@@ -237,7 +245,6 @@ p {
 
 <body>
 
-<!-- DESTELLITOS -->
 <div class="destello"></div>
 <div class="destello"></div>
 <div class="destello"></div>
@@ -245,29 +252,32 @@ p {
 <div class="destello"></div>
 <div class="destello"></div>
 
-<!-- MÚSICA -->
 <audio id="musica" loop>
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<button class="musica" onclick="alternarMusica()" aria-label="Música">🎵</button>
+<button class="musica" onclick="alternarMusica()">🎵</button>
 
 <!-- SOBRE -->
 <section class="screen active" id="sobre">
   <div class="contenido">
 
-    <div class="loto">🌸</div>
+    <div class="corazon">💚</div>
 
     <h2>Una invitación especial...</h2>
 
-    <div class="sobre-area" onclick="abrirSobre()">
-      <div class="sobre" id="sobreCaja">
-        <div class="solapa"></div>
-        <div class="sello">A</div>
+    <div class="sobre-area">
+      <div class="sobre-caja" onclick="abrirSobre()">
+        <div class="sobre" id="sobreCaja">
+          <div class="solapa"></div>
+          <div class="sello">💚</div>
+        </div>
       </div>
     </div>
 
-    <div class="instruccion">💌 Toca para abrir 💌</div>
+    <div class="instruccion">
+      💚 Toca para abrir 💚
+    </div>
 
   </div>
 </section>
@@ -275,7 +285,7 @@ p {
 <!-- PORTADA -->
 <section class="screen" id="pagina1">
   <div class="contenido">
-    <div class="loto">🌸</div>
+    <div class="corazon">💚</div>
     <p class="dorado">Con mucha ilusión quiero compartir contigo...</p>
     <h1>Mis XV</h1>
     <h2>Arianis</h2>
@@ -290,7 +300,7 @@ p {
 <!-- INVITACIÓN -->
 <section class="screen" id="pagina2">
   <div class="contenido">
-    <div class="loto">🌿</div>
+    <div class="corazon">💚</div>
     <h2>Estás invitado</h2>
 
     <p>
@@ -311,7 +321,7 @@ p {
 <!-- FECHA -->
 <section class="screen" id="pagina3">
   <div class="contenido">
-    <div class="loto">🌸</div>
+    <div class="corazon">💚</div>
     <h2>La fecha</h2>
 
     <p class="dorado">10 de octubre de 2026</p>
@@ -331,7 +341,7 @@ p {
 <!-- AGRADECIMIENTO -->
 <section class="screen" id="pagina4">
   <div class="contenido">
-    <div class="loto">🌿</div>
+    <div class="corazon">💚</div>
     <h2>Gracias por ser parte</h2>
 
     <p>
@@ -354,16 +364,13 @@ p {
 <!-- DETALLES -->
 <section class="screen" id="pagina5">
   <div class="contenido">
-    <div class="loto">🌸</div>
+    <div class="corazon">💚</div>
     <h2>Un pequeño detalle</h2>
 
-    <p>
-      🎁 <strong>Lluvia de sobres</strong>
-    </p>
+    <p>🎁 <strong>Lluvia de sobres</strong></p>
 
     <p>
-      Lo más importante para mí es compartir este momento
-      contigo. ✨
+      Lo más importante para mí es compartir este momento contigo. ✨
     </p>
 
     <button class="boton" onclick="siguiente(6)">
@@ -375,7 +382,7 @@ p {
 <!-- CONFIRMACIÓN -->
 <section class="screen" id="pagina6">
   <div class="contenido">
-    <div class="loto">🌿</div>
+    <div class="corazon">💚</div>
     <h2>¿Nos acompañas?</h2>
 
     <p>
@@ -384,7 +391,7 @@ p {
     </p>
 
     <button class="boton"
-      onclick="window.open('https://wa.me/50662999872?text=Hola%20Arianis%20💗%20quiero%20confirmar%20mi%20asistencia%20a%20tus%20XV.','_blank')">
+      onclick="window.open('https://wa.me/50662999872?text=Hola%20Arianis%20%F0%9F%92%97%20quiero%20confirmar%20mi%20asistencia%20a%20tus%20XV.','_blank')">
       💌 CONFIRMAR ASISTENCIA
     </button>
 
@@ -395,14 +402,11 @@ p {
       📸 ÁLBUM DE RECUERDOS
     </button>
 
-    <p class="dorado">
-      ✨ Te espero ✨
-    </p>
+    <p class="dorado">✨ Te espero ✨</p>
   </div>
 </section>
 
 <script>
-let paginaActual = 0;
 let musicaSonando = false;
 
 function abrirSobre() {
@@ -429,8 +433,6 @@ function mostrarPagina(numero) {
     pagina.classList.add("active");
     window.scrollTo(0, 0);
   }
-
-  paginaActual = numero;
 }
 
 function siguiente(numero) {
@@ -446,7 +448,6 @@ function reproducirMusica() {
     })
     .catch(() => {
       musicaSonando = false;
-      alert("Toca el botón 🎵 para iniciar la música.");
     });
 }
 
@@ -462,11 +463,11 @@ function alternarMusica() {
         musicaSonando = true;
       })
       .catch(() => {
-        alert("Primero debes agregar el archivo musica.mp3 a la invitación.");
+        alert("Agrega el archivo musica.mp3 a tu GitHub.");
       });
   }
 }
 </script>
 
 </body>
-</html>
+  </html>
