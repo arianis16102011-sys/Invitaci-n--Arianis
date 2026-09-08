@@ -3,320 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arianis | Mis XV</title>
+<title>Mis XV - Arianis</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+* {
+  box-sizing: border-box;
 }
 
-html{
-  scroll-behavior:smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-body{
-  background:#eaf5e5;
-  color:#385744;
-  font-family:Georgia,"Times New Roman",serif;
-  overflow-x:hidden;
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: #e8f3df;
+  color: #4d5f42;
+  overflow-x: hidden;
 }
 
-.page{
-  min-height:100vh;
-  padding:50px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
+.screen {
+  min-height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
+  overflow: hidden;
 }
 
-.card{
-  width:min(650px,100%);
-  min-height:84vh;
-  padding:48px 25px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position:relative;
-
-  border:1px solid #c6a85a;
-  border-radius:30px;
-  background:rgba(252,253,246,.94);
-
-  box-shadow:0 18px 50px rgba(50,90,60,.14);
-
-  animation:entrada 1s ease both;
+.screen.active {
+  display: flex;
+  animation: aparecer 1s ease;
 }
 
-.card:before,
-.card:after{
-  content:"✿";
-  position:absolute;
-  color:#c6a85a;
-  font-size:55px;
-  opacity:.65;
+.contenido {
+  width: min(92%, 650px);
+  padding: 35px 25px;
+  border: 2px solid #c6a85b;
+  border-radius: 28px;
+  background: rgba(255,255,255,.35);
+  box-shadow: 0 0 35px rgba(198,168,91,.25);
+  position: relative;
+  z-index: 2;
 }
 
-.card:before{
-  top:17px;
-  left:20px;
+h1 {
+  color: #a88b3e;
+  font-size: clamp(40px, 11vw, 75px);
+  margin: 10px 0;
 }
 
-.card:after{
-  bottom:17px;
-  right:20px;
-  transform:rotate(180deg);
+h2 {
+  color: #a88b3e;
+  font-size: clamp(27px, 7vw, 45px);
 }
 
-.lotus{
-  font-size:48px;
-  color:#b69547;
-  animation:flotar 3s ease-in-out infinite;
-  margin-bottom:12px;
+p {
+  font-size: 19px;
+  line-height: 1.7;
 }
 
-.kicker{
-  text-transform:uppercase;
-  letter-spacing:4px;
-  font:12px Arial,sans-serif;
-  color:#92773a;
-  margin-bottom:15px;
+.dorado {
+  color: #a88b3e;
 }
 
-h1{
-  font-size:clamp(55px,15vw,92px);
-  font-weight:400;
-  line-height:.95;
-  color:#416b50;
-  margin:0 0 10px;
-  animation:brillo 3s ease-in-out infinite;
+.loto {
+  font-size: 65px;
+  animation: flotar 3s ease-in-out infinite;
 }
 
-h2{
-  font-size:clamp(30px,8vw,47px);
-  font-weight:400;
-  color:#a17f36;
-  margin:0 0 20px;
+.boton {
+  border: 2px solid #b79745;
+  background: #fffdf5;
+  color: #7b6632;
+  border-radius: 30px;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.12);
+  transition: transform .25s, box-shadow .25s;
 }
 
-p{
-  max-width:510px;
-  font:16px/1.8 Arial,sans-serif;
-  margin:8px 0;
+.boton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 7px 25px rgba(0,0,0,.18);
 }
 
-.date{
-  padding:15px 20px;
-  margin:18px 0;
-  border-top:1px solid #c6a85a;
-  border-bottom:1px solid #c6a85a;
-  font:13px Arial,sans-serif;
-  letter-spacing:3px;
+/* SOBRE */
+.sobre-area {
+  position: relative;
+  width: 300px;
+  height: 210px;
+  margin: 25px auto;
+  cursor: pointer;
+  perspective: 800px;
 }
 
-.info{
-  width:min(470px,100%);
-  display:grid;
-  gap:13px;
-  margin:8px 0 18px;
+.sobre {
+  width: 100%;
+  height: 100%;
+  background: #f8f3df;
+  border: 3px solid #c6a85b;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
 }
 
-.info-box{
-  padding:17px;
-  border:1px solid #d7c58e;
-  border-radius:18px;
-  background:#f7faef;
-  font:16px/1.55 Arial,sans-serif;
+.sobre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, transparent 49%, #d8c47e 50%, transparent 51%);
+  opacity: .55;
 }
 
-.info-box strong{
-  display:block;
-  text-transform:uppercase;
-  letter-spacing:1.3px;
-  color:#9b7b39;
-  font-size:12px;
-  margin-bottom:4px;
+.solapa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 105px;
+  background: #eee5c8;
+  border-bottom: 3px solid #c6a85b;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 1s ease;
+  z-index: 3;
 }
 
-.quote{
-  font-style:italic;
-  color:#6b806c;
-  margin:16px auto;
+.sello {
+  position: absolute;
+  left: 50%;
+  top: 105px;
+  transform: translate(-50%, -50%);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #c6a85b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  z-index: 4;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
 }
 
-.btn{
-  display:inline-block;
-  text-decoration:none;
-  margin:7px 4px;
-  padding:14px 22px;
-  border-radius:28px;
-  background:#416b50;
-  color:white;
-  font:bold 14px Arial,sans-serif;
-  box-shadow:0 7px 18px rgba(65,107,80,.18);
-  transition:.25s;
-  cursor:pointer;
-  border:0;
+.sobre.abierto .solapa {
+  transform: rotateX(180deg);
 }
 
-.btn:hover{
-  transform:translateY(-3px);
+.instruccion {
+  margin-top: 10px;
+  color: #8b7439;
+  font-size: 19px;
+  animation: pulso 1.8s infinite;
 }
 
-.gold{
-  background:#b08d45;
+/* DESTELLITOS */
+.destello {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  background: #d8bd61;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: destellar 2.5s ease-in-out infinite;
+  z-index: 1;
 }
 
-.music{
-  position:fixed;
-  top:16px;
-  right:16px;
-  z-index:20;
-  border:1px solid #c6a85a;
-  background:rgba(255,255,255,.93);
-  color:#416b50;
-  border-radius:50%;
-  width:48px;
-  height:48px;
-  font-size:21px;
-  box-shadow:0 5px 18px #0002;
-  cursor:pointer;
+.destello:nth-child(1) { left: 10%; top: 20%; }
+.destello:nth-child(2) { left: 82%; top: 18%; animation-delay: .6s; }
+.destello:nth-child(3) { left: 18%; top: 75%; animation-delay: 1s; }
+.destello:nth-child(4) { left: 88%; top: 70%; animation-delay: 1.5s; }
+.destello:nth-child(5) { left: 50%; top: 10%; animation-delay: .3s; }
+.destello:nth-child(6) { left: 60%; top: 85%; animation-delay: 1.8s; }
+
+/* BOTÓN DE MÚSICA */
+.musica {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 20;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid #c6a85b;
+  background: #fffdf5;
+  color: #8c7130;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(0,0,0,.15);
 }
 
-.nav{
-  position:fixed;
-  bottom:13px;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:20;
-  display:flex;
-  gap:3px;
-  padding:7px 8px;
-  background:rgba(255,255,255,.92);
-  border:1px solid #d3c183;
-  border-radius:30px;
-  box-shadow:0 5px 20px #0002;
-}
-
-.nav a{
-  color:#55725d;
-  text-decoration:none;
-  font:11px Arial,sans-serif;
-  padding:8px 9px;
-  border-radius:20px;
-}
-
-.nav a:hover{
-  background:#e6f0df;
-}
-
-.petal{
-  position:absolute;
-  color:#b99a51;
-  opacity:.35;
-  font-size:35px;
-  animation:caer linear infinite;
-}
-
-.p1{
-  left:8%;
-  top:-5%;
-  animation-duration:9s;
-}
-
-.p2{
-  left:75%;
-  top:-8%;
-  animation-duration:12s;
-  animation-delay:2s;
-}
-
-.p3{
-  left:45%;
-  top:-7%;
-  animation-duration:11s;
-  animation-delay:4s;
-}
-
-.p4{
-  left:90%;
-  top:-4%;
-  animation-duration:10s;
-  animation-delay:1s;
-}
-
-@keyframes entrada{
-  from{
-    opacity:0;
-    transform:scale(.96) translateY(20px);
+/* ANIMACIONES */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(.94) translateY(20px);
   }
-
-  to{
-    opacity:1;
-    transform:none;
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 
-@keyframes flotar{
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-8px);
-  }
+@keyframes flotar {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-@keyframes brillo{
-  0%,100%{
-    text-shadow:0 0 0 transparent;
-  }
-
-  50%{
-    text-shadow:0 0 18px #c6a85a66;
-  }
+@keyframes pulso {
+  0%,100% { opacity: .65; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
 }
 
-@keyframes caer{
-  0%{
-    transform:translate3d(0,-10vh,0) rotate(0);
-    opacity:0;
+@keyframes destellar {
+  0%,100% {
+    opacity: .15;
+    transform: scale(.5);
   }
-
-  15%{
-    opacity:.35;
-  }
-
-  100%{
-    transform:translate3d(50px,110vh,0) rotate(240deg);
-    opacity:0;
-  }
-}
-
-@media(max-width:520px){
-
-  .page{
-    padding:35px 12px;
-  }
-
-  .card{
-    min-height:88vh;
-    padding:42px 20px;
-  }
-
-  .nav a{
-    font-size:9px;
-    padding:7px 6px;
-  }
-
-  .music{
-    width:45px;
-    height:45px;
+  50% {
+    opacity: 1;
+    transform: scale(1.8);
   }
 }
 </style>
@@ -324,317 +237,236 @@ p{
 
 <body>
 
-<!-- BOTÓN DE MÚSICA -->
-<button class="music" id="musicBtn">🎵</button>
+<!-- DESTELLITOS -->
+<div class="destello"></div>
+<div class="destello"></div>
+<div class="destello"></div>
+<div class="destello"></div>
+<div class="destello"></div>
+<div class="destello"></div>
 
+<!-- MÚSICA -->
 <audio id="musica" loop>
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<!-- FLORES / DESTELLOS -->
-<div class="petal p1">✦</div>
-<div class="petal p2">✿</div>
-<div class="petal p3">✦</div>
-<div class="petal p4">✿</div>
+<button class="musica" onclick="alternarMusica()" aria-label="Música">🎵</button>
 
+<!-- SOBRE -->
+<section class="screen active" id="sobre">
+  <div class="contenido">
 
-<!-- MENÚ -->
-<nav class="nav">
-<a href="#inicio">Inicio</a>
-<a href="#invitacion">Invitación</a>
-<a href="#fecha">Fecha</a>
-<a href="#palabras">Palabras</a>
-<a href="#detalles">Detalles</a>
-<a href="#confirmacion">RSVP</a>
-</nav>
+    <div class="loto">🌸</div>
 
+    <h2>Una invitación especial...</h2>
 
-<!-- PÁGINA 1 -->
+    <div class="sobre-area" onclick="abrirSobre()">
+      <div class="sobre" id="sobreCaja">
+        <div class="solapa"></div>
+        <div class="sello">A</div>
+      </div>
+    </div>
 
-<section class="page" id="inicio">
+    <div class="instruccion">💌 Toca para abrir 💌</div>
 
-<div class="card">
-
-<div class="lotus">❀</div>
-
-<div class="kicker">
-Una celebración muy especial
-</div>
-
-<h1>Arianis</h1>
-
-<h2>Mis XV</h2>
-
-<div class="date">
-10 · OCTUBRE · 2026
-</div>
-
-<p>
-Con mucha ilusión quiero compartir contigo uno de los momentos más bonitos de mi vida.
-</p>
-
-<a class="btn" href="#invitacion">
-Abrir invitación ✨
-</a>
-
-</div>
-
+  </div>
 </section>
 
+<!-- PORTADA -->
+<section class="screen" id="pagina1">
+  <div class="contenido">
+    <div class="loto">🌸</div>
+    <p class="dorado">Con mucha ilusión quiero compartir contigo...</p>
+    <h1>Mis XV</h1>
+    <h2>Arianis</h2>
+    <p>✨ Una noche para recordar ✨</p>
 
-<!-- PÁGINA 2 -->
-
-<section class="page" id="invitacion">
-
-<div class="card">
-
-<div class="lotus">✿</div>
-
-<div class="kicker">
-Estás invitado/a
-</div>
-
-<h2>
-Una noche para recordar
-</h2>
-
-<p>
-Hay momentos que se vuelven inolvidables cuando los compartimos con las personas que queremos.
-</p>
-
-<p class="quote">
-“Me encantaría contar con tu presencia para celebrar juntos este día tan especial.”
-</p>
-
-<a class="btn" href="#fecha">
-Continuar 🌿
-</a>
-
-</div>
-
+    <button class="boton" onclick="siguiente(2)">
+      CONTINUAR ✨
+    </button>
+  </div>
 </section>
 
+<!-- INVITACIÓN -->
+<section class="screen" id="pagina2">
+  <div class="contenido">
+    <div class="loto">🌿</div>
+    <h2>Estás invitado</h2>
 
-<!-- PÁGINA 3 -->
+    <p>
+      Hay momentos que se convierten en recuerdos para toda la vida,
+      y quiero compartir uno de los más especiales contigo.
+    </p>
 
-<section class="page" id="fecha">
+    <p class="dorado">
+      💚 Te espero para celebrar mis XV 💚
+    </p>
 
-<div class="card">
-
-<div class="lotus">❀</div>
-
-<div class="kicker">
-Guarda la fecha
-</div>
-
-<h2>
-Nos vemos
-</h2>
-
-<div class="info">
-
-<div class="info-box">
-<strong>Fecha</strong>
-10 de octubre de 2026
-</div>
-
-<div class="info-box">
-<strong>Hora</strong>
-3:30 p. m.
-</div>
-
-<div class="info-box">
-<strong>Lugar</strong>
-Salón comunal<br>
-Urbanización La Melissa
-</div>
-
-</div>
-
-<a class="btn" href="#palabras">
-Siguiente ✨
-</a>
-
-</div>
-
+    <button class="boton" onclick="siguiente(3)">
+      CONTINUAR ✨
+    </button>
+  </div>
 </section>
 
+<!-- FECHA -->
+<section class="screen" id="pagina3">
+  <div class="contenido">
+    <div class="loto">🌸</div>
+    <h2>La fecha</h2>
 
-<!-- PÁGINA 4 -->
+    <p class="dorado">10 de octubre de 2026</p>
+    <p>🕞 3:30 p.m.</p>
 
-<section class="page" id="palabras">
+    <p>
+      📍 Salón comunal<br>
+      Urbanización La Melissa
+    </p>
 
-<div class="card">
-
-<div class="lotus">✿</div>
-
-<div class="kicker">
-Con cariño
-</div>
-
-<h2>
-Gracias por ser parte
-</h2>
-
-<p>
-Gracias a cada persona que ha formado parte de mi vida y que hoy puede acompañarme a celebrar este nuevo capítulo.
-</p>
-
-<p class="quote">
-Tu presencia hará que este día sea todavía más especial.
-</p>
-
-<a class="btn" href="#detalles">
-Ver detalles 🌸
-</a>
-
-</div>
-
+    <button class="boton" onclick="siguiente(4)">
+      CONTINUAR ✨
+    </button>
+  </div>
 </section>
 
+<!-- AGRADECIMIENTO -->
+<section class="screen" id="pagina4">
+  <div class="contenido">
+    <div class="loto">🌿</div>
+    <h2>Gracias por ser parte</h2>
 
-<!-- PÁGINA 5 -->
+    <p>
+      Tu presencia hará que este día sea todavía más especial.
+      Gracias por acompañarme y formar parte de este recuerdo
+      que guardaré siempre en mi corazón.
+    </p>
 
-<section class="page" id="detalles">
+    <p class="dorado">
+      Con cariño,<br>
+      Arianis 💚
+    </p>
 
-<div class="card">
-
-<div class="lotus">❀</div>
-
-<div class="kicker">
-Detalles especiales
-</div>
-
-<h2>
-Para tener en cuenta
-</h2>
-
-<div class="info">
-
-<div class="info-box">
-
-<strong>
-💝 Lluvia de sobres
-</strong>
-
-Si deseas tener un detalle conmigo, habrá lluvia de sobres.
-
-</div>
-
-<div class="info-box">
-
-<strong>
-📸 Recuerdos
-</strong>
-
-Comparte las fotos bonitas de este día en nuestro álbum.
-
-</div>
-
-</div>
-
-<a class="btn" href="#confirmacion">
-Última página 💚
-</a>
-
-</div>
-
+    <button class="boton" onclick="siguiente(5)">
+      CONTINUAR ✨
+    </button>
+  </div>
 </section>
 
+<!-- DETALLES -->
+<section class="screen" id="pagina5">
+  <div class="contenido">
+    <div class="loto">🌸</div>
+    <h2>Un pequeño detalle</h2>
 
-<!-- PÁGINA 6 -->
+    <p>
+      🎁 <strong>Lluvia de sobres</strong>
+    </p>
 
-<section class="page" id="confirmacion">
+    <p>
+      Lo más importante para mí es compartir este momento
+      contigo. ✨
+    </p>
 
-<div class="card">
-
-<div class="lotus">✿</div>
-
-<div class="kicker">
-Antes de venir
-</div>
-
-<h2>
-¿Nos acompañas?
-</h2>
-
-<p>
-Por favor confirma tu asistencia. También puedes compartir tus recuerdos en el álbum.
-</p>
-
-<div style="margin-top:18px">
-
-<!-- WHATSAPP -->
-
-<a
-class="btn"
-href="https://wa.me/50662999872?text=Hola%20Arianis%20💗%20quiero%20confirmar%20mi%20asistencia%20a%20tus%20XV."
-target="_blank"
-rel="noopener"
->
-💌 Confirmar asistencia
-</a>
-
-
-<!-- GOOGLE FOTOS -->
-
-<a
-class="btn gold"
-href="https://photos.app.goo.gl/PdC8juV8uxDQnrWB8"
-target="_blank"
-rel="noopener"
->
-📸 Álbum de recuerdos
-</a>
-
-</div>
-
-<p class="quote">
-Te espero para celebrar juntos. 💚
-</p>
-
-<a class="btn" href="#inicio">
-Volver al inicio ↑
-</a>
-
-</div>
-
+    <button class="boton" onclick="siguiente(6)">
+      CONTINUAR ✨
+    </button>
+  </div>
 </section>
 
+<!-- CONFIRMACIÓN -->
+<section class="screen" id="pagina6">
+  <div class="contenido">
+    <div class="loto">🌿</div>
+    <h2>¿Nos acompañas?</h2>
+
+    <p>
+      Me encantaría saber si podrás compartir conmigo
+      esta noche tan especial. 💚
+    </p>
+
+    <button class="boton"
+      onclick="window.open('https://wa.me/50662999872?text=Hola%20Arianis%20💗%20quiero%20confirmar%20mi%20asistencia%20a%20tus%20XV.','_blank')">
+      💌 CONFIRMAR ASISTENCIA
+    </button>
+
+    <br>
+
+    <button class="boton"
+      onclick="window.open('https://photos.app.goo.gl/PdC8juV8uxDQnrWB8','_blank')">
+      📸 ÁLBUM DE RECUERDOS
+    </button>
+
+    <p class="dorado">
+      ✨ Te espero ✨
+    </p>
+  </div>
+</section>
 
 <script>
+let paginaActual = 0;
+let musicaSonando = false;
 
-const botonMusica = document.getElementById("musicBtn");
-const musica = document.getElementById("musica");
+function abrirSobre() {
+  const caja = document.getElementById("sobreCaja");
 
-botonMusica.addEventListener("click", async function(){
+  caja.classList.add("abierto");
 
-try{
-
-if(musica.paused){
-
-await musica.play();
-
-botonMusica.textContent="⏸️";
-
-}else{
-
-musica.pause();
-
-botonMusica.textContent="🎵";
-
+  setTimeout(() => {
+    mostrarPagina(1);
+    reproducirMusica();
+  }, 900);
 }
 
-}catch(error){
+function mostrarPagina(numero) {
+  document.querySelectorAll(".screen").forEach(pagina => {
+    pagina.classList.remove("active");
+  });
 
-alert("Para escuchar música debes subir un archivo llamado musica.mp3 junto al index.html.");
+  const pagina = document.getElementById(
+    numero === 0 ? "sobre" : "pagina" + numero
+  );
 
+  if (pagina) {
+    pagina.classList.add("active");
+    window.scrollTo(0, 0);
+  }
+
+  paginaActual = numero;
 }
 
-});
+function siguiente(numero) {
+  mostrarPagina(numero);
+}
 
+function reproducirMusica() {
+  const audio = document.getElementById("musica");
+
+  audio.play()
+    .then(() => {
+      musicaSonando = true;
+    })
+    .catch(() => {
+      musicaSonando = false;
+      alert("Toca el botón 🎵 para iniciar la música.");
+    });
+}
+
+function alternarMusica() {
+  const audio = document.getElementById("musica");
+
+  if (musicaSonando) {
+    audio.pause();
+    musicaSonando = false;
+  } else {
+    audio.play()
+      .then(() => {
+        musicaSonando = true;
+      })
+      .catch(() => {
+        alert("Primero debes agregar el archivo musica.mp3 a la invitación.");
+      });
+  }
+}
 </script>
 
 </body>
-  </html>
-  
+</html>
