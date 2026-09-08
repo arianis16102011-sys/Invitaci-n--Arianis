@@ -3,435 +3,334 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mis XV Arianis 💚</title>
+<title>Mis 15 - Arianis</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-    min-height:100vh;
-    background:
-        radial-gradient(circle at 20% 15%,rgba(255,255,255,.9),transparent 22%),
-        radial-gradient(circle at 85% 80%,rgba(255,255,255,.7),transparent 25%),
-        linear-gradient(135deg,#dcebdd,#f4f2df,#d8e8d9);
-    font-family:Georgia,"Times New Roman",serif;
-    color:#355741;
-    overflow-x:hidden;
+  font-family: Georgia, 'Times New Roman', serif;
+  background:linear-gradient(135deg,#eef8ef,#fffdf5,#e4f2e5);
+  color:#405447;
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-/* ✨ DESTELLOS ✨ */
-
+/* DESTELLOS */
 .sparkle{
-    position:fixed;
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:#d7b85d;
-    box-shadow:0 0 12px #f5df94;
-    pointer-events:none;
-    z-index:100;
-    animation:brillo 3s ease-in-out infinite;
+  position:fixed;
+  width:5px;
+  height:5px;
+  background:#d4af37;
+  border-radius:50%;
+  box-shadow:0 0 10px #d4af37;
+  animation:brillar 2.5s infinite ease-in-out;
+  z-index:1;
 }
 
-.s1{top:10%;left:12%}
-.s2{top:24%;right:13%;animation-delay:.7s}
-.s3{top:55%;left:6%;animation-delay:1.3s}
-.s4{bottom:20%;right:16%;animation-delay:1.9s}
-.s5{bottom:10%;left:22%;animation-delay:2.4s}
-.s6{top:42%;right:7%;animation-delay:1s}
-
-@keyframes brillo{
-    0%,100%{
-        opacity:.15;
-        transform:scale(.5);
-    }
-    50%{
-        opacity:1;
-        transform:scale(1.5);
-    }
+@keyframes brillar{
+  0%,100%{opacity:.2;transform:scale(.7)}
+  50%{opacity:1;transform:scale(1.5)}
 }
 
-/* CONTENEDOR */
-
-.contenedor{
-    width:min(92%,430px);
-    min-height:100vh;
-    margin:auto;
-    position:relative;
-}
-
-/* 💌 SOBRE */
-
-.pantalla-sobre{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    transition:opacity .8s ease,transform .8s ease;
-}
-
-.pantalla-sobre.oculto{
-    opacity:0;
-    transform:scale(1.08);
-    pointer-events:none;
-    position:absolute;
-    inset:0;
-}
-
-.sobre-area{
-    cursor:pointer;
-    -webkit-tap-highlight-color:transparent;
-}
-
-.frase{
-    color:#806b39;
-    font-size:12px;
-    letter-spacing:4px;
-    margin-bottom:28px;
+/* SOBRE */
+#pantallaSobre{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#e8f5e8,#fffdf7);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:20;
 }
 
 .sobre{
-    width:290px;
-    height:190px;
-    position:relative;
-    margin:auto;
-    filter:drop-shadow(0 15px 20px rgba(49,70,55,.25));
-    transition:transform .3s ease;
-    perspective:800px;
+  width:300px;
+  height:210px;
+  position:relative;
+  cursor:pointer;
+  filter:drop-shadow(0 12px 20px rgba(0,0,0,.15));
 }
 
-.sobre:active{
-    transform:scale(.97);
+.cuerpoSobre{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:160px;
+  background:#f8f1dc;
+  border:3px solid #d4af37;
+  border-radius:5px;
+  overflow:hidden;
 }
 
-.cuerpo{
-    position:absolute;
-    inset:0;
-    background:#f8f5e9;
-    border:2px solid #c8a74c;
-    border-radius:5px;
-    overflow:hidden;
+.cuerpoSobre:before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  border-style:solid;
+  border-width:80px 150px 0 0;
+  border-color:#eadfbd transparent transparent transparent;
 }
 
-.cuerpo:before,
-.cuerpo:after{
-    content:"";
-    position:absolute;
-    width:2px;
-    height:250px;
-    background:#c8a74c;
-    top:-30px;
-    left:50%;
-}
-
-.cuerpo:before{
-    transform:rotate(55deg);
-}
-
-.cuerpo:after{
-    transform:rotate(-55deg);
+.cuerpoSobre:after{
+  content:"";
+  position:absolute;
+  right:0;
+  bottom:0;
+  border-style:solid;
+  border-width:0 0 80px 150px;
+  border-color:transparent transparent #eadfbd transparent;
 }
 
 .tapa{
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height:110px;
-    background:#f4f0df;
-    border:2px solid #c8a74c;
-    clip-path:polygon(0 0,100% 0,50% 100%);
-    transform-origin:top center;
-    transition:transform 1s cubic-bezier(.4,0,.2,1);
-    z-index:5;
-}
-
-.sobre.abierto .tapa{
-    transform:rotateX(180deg);
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:115px;
+  background:#f3e8c9;
+  border:3px solid #d4af37;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;
+  transition:1s ease;
+  z-index:4;
 }
 
 .sello{
-    position:absolute;
-    z-index:8;
-    top:74px;
-    left:50%;
-    transform:translateX(-50%);
-    width:46px;
-    height:46px;
-    border-radius:50%;
-    background:linear-gradient(145deg,#dfc978,#ad8b35);
-    border:3px solid #f4df95;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:21px;
-    box-shadow:0 3px 12px rgba(0,0,0,.2);
-    transition:opacity .4s ease;
+  position:absolute;
+  left:50%;
+  top:70px;
+  transform:translateX(-50%);
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  background:#d4af37;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  z-index:6;
+  box-shadow:0 3px 10px rgba(0,0,0,.2);
 }
 
-.sobre.abierto .sello{
-    opacity:0;
+.textoSobre{
+  position:absolute;
+  bottom:18px;
+  width:100%;
+  text-align:center;
+  color:#806b32;
+  font-size:16px;
+  z-index:7;
 }
 
-.toca{
-    margin-top:30px;
-    color:#806b39;
-    font-size:13px;
-    letter-spacing:2px;
+.sobre.abierto .tapa{
+  transform:rotateX(180deg);
 }
 
 /* INVITACIÓN */
-
-.invitacion{
-    display:none;
-    padding:25px 0 40px;
-    animation:entrada .9s ease;
+#invitacion{
+  display:none;
+  min-height:100vh;
+  padding:25px 15px;
+  position:relative;
+  z-index:5;
 }
 
-.invitacion.visible{
-    display:block;
+.contenedor{
+  max-width:600px;
+  margin:auto;
 }
-
-@keyframes entrada{
-    from{
-        opacity:0;
-        transform:translateY(25px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* PÁGINAS */
 
 .pagina{
-    display:none;
-    min-height:calc(100vh - 65px);
-    position:relative;
-    padding:45px 25px;
-    background:rgba(250,249,241,.95);
-    border:2px solid #c8a74c;
-    border-radius:25px;
-    box-shadow:
-        0 0 0 6px rgba(200,167,76,.12),
-        0 18px 45px rgba(49,84,63,.2);
-    text-align:center;
-    overflow:hidden;
+  display:none;
+  min-height:calc(100vh - 50px);
+  background:rgba(255,255,250,.88);
+  border:2px solid #d4af37;
+  border-radius:25px;
+  padding:40px 25px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(73,93,73,.15);
+  animation:entrada .7s ease;
+  position:relative;
+  overflow:hidden;
 }
 
 .pagina.activa{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    animation:pagina .65s ease;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
-@keyframes pagina{
-    from{
-        opacity:0;
-        transform:translateX(18px);
-    }
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
+@keyframes entrada{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-.pagina:before{
-    content:"✦";
-    position:absolute;
-    top:14px;
-    left:18px;
-    color:#c8a74c;
-    font-size:18px;
-}
-
-.pagina:after{
-    content:"✦";
-    position:absolute;
-    right:18px;
-    bottom:14px;
-    color:#c8a74c;
-    font-size:18px;
-}
-
-.mini{
-    color:#91783d;
-    font-size:12px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    margin-bottom:15px;
+.adornito{
+  color:#d4af37;
+  font-size:28px;
+  margin-bottom:15px;
 }
 
 h1{
-    color:#3c654c;
-    font-size:48px;
-    font-weight:normal;
+  font-size:48px;
+  color:#637c68;
+  margin:10px 0;
 }
 
 h2{
-    color:#756238;
-    font-size:28px;
-    font-weight:normal;
-    margin-bottom:18px;
+  font-size:31px;
+  color:#637c68;
+  margin-bottom:20px;
 }
 
-.numero{
-    color:#c5a54d;
-    font-size:105px;
-    line-height:1;
-    margin:15px 0;
-    text-shadow:2px 3px 0 #f0dfa1;
+h3{
+  color:#8d7634;
+  font-size:23px;
+  margin:15px 0;
+}
+
+p{
+  font-size:18px;
+  line-height:1.7;
+  margin:10px 0;
 }
 
 .nombre{
-    color:#315a42;
-    font-size:42px;
-    margin:5px 0 20px;
+  font-size:24px;
+  color:#806b32;
+  letter-spacing:3px;
 }
 
-.flor{
-    color:#c5a54d;
-    font-size:25px;
-    margin:10px;
+.xv{
+  font-size:75px;
+  color:#d4af37;
+  margin:10px 0;
+  text-shadow:0 2px 5px rgba(212,175,55,.3);
 }
 
-.texto{
-    max-width:320px;
-    font-size:17px;
-    line-height:1.8;
+.detalle{
+  margin:12px 0;
+  font-size:19px;
 }
 
-.divisor{
-    width:90px;
-    height:1px;
-    background:#c5a54d;
-    margin:20px auto;
-}
-
-.dato{
-    font-size:18px;
-    line-height:1.6;
-    margin:9px 0;
-}
-
-.dato strong{
-    color:#796438;
-}
-
-.pequeno{
-    color:#718171;
-    font-size:14px;
-    margin-top:8px;
+.icono{
+  font-size:35px;
+  margin-bottom:5px;
 }
 
 /* BOTONES */
-
 .botones{
-    width:100%;
-    margin-top:24px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-top:25px;
 }
 
+button,
 .boton{
-    width:100%;
-    display:block;
-    padding:15px 18px;
-    margin:11px 0;
-    border-radius:30px;
-    border:1px solid #c8a74c;
-    background:linear-gradient(135deg,#faf6e7,#e7e0c5);
-    color:#4c654f;
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:16px;
-    text-decoration:none;
-    cursor:pointer;
-    box-shadow:0 5px 14px rgba(60,80,60,.12);
-    transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
-    -webkit-tap-highlight-color:transparent;
+  border:none;
+  text-decoration:none;
+  display:inline-block;
+  padding:13px 22px;
+  border-radius:30px;
+  background:#637c68;
+  color:white;
+  font-family:Georgia,serif;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:0 4px 10px rgba(0,0,0,.12);
 }
 
+button:hover,
 .boton:hover{
-    transform:translateY(-2px);
-    box-shadow:0 9px 20px rgba(60,80,60,.2);
+  transform:translateY(-3px);
+  background:#806b32;
 }
 
-.boton:active{
-    transform:scale(.95);
-    box-shadow:0 0 20px rgba(215,183,88,.9);
-    background:#eadca9;
+.botonDorado{
+  background:#d4af37;
 }
 
-.dorado{
-    background:linear-gradient(135deg,#dec77b,#b8953c);
-    color:white;
-    border-color:#a9862e;
+/* LLUVIA DE SOBRES */
+.lluvia{
+  margin-top:25px;
+  padding:20px;
+  border:1px solid #d4af37;
+  border-radius:18px;
+  background:rgba(239,247,237,.7);
 }
 
-.navegacion{
-    display:flex;
-    width:100%;
-    gap:10px;
-    margin-top:20px;
+.lluvia .sobreIcono{
+  font-size:38px;
 }
 
-.navegacion .boton{
-    margin:0;
-    font-size:13px;
-    padding:13px 8px;
+.lluvia strong{
+  color:#806b32;
+  font-size:20px;
 }
 
-/* 🎵 MÚSICA */
-
-.musica{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    z-index:200;
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    border:1px solid #c8a74c;
-    background:#faf6e7;
-    color:#806b39;
-    font-size:20px;
-    cursor:pointer;
-    box-shadow:0 5px 15px rgba(0,0,0,.18);
+/* ALBUM */
+.album{
+  margin-top:20px;
+  padding:25px 18px;
+  border:1px solid #d4af37;
+  border-radius:20px;
+  background:linear-gradient(135deg,rgba(237,247,237,.8),rgba(255,253,245,.9));
 }
 
-.musica:active{
-    transform:scale(.9);
+.albumIcono{
+  font-size:48px;
+  margin-bottom:10px;
 }
 
-@media(max-width:360px){
+.fraseAlbum{
+  font-style:italic;
+  color:#637c68;
+  font-size:19px;
+}
 
-    .sobre{
-        width:255px;
-        height:170px;
-    }
+/* MÚSICA */
+#musicaBtn{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  padding:0;
+  z-index:30;
+  background:#d4af37;
+  font-size:20px;
+}
 
-    h1{
-        font-size:42px;
-    }
+/* PIE */
+.decoracion{
+  margin-top:25px;
+  color:#d4af37;
+  letter-spacing:8px;
+}
 
-    .numero{
-        font-size:85px;
-    }
-
-    .nombre{
-        font-size:36px;
-    }
+@media(max-width:400px){
+  h1{font-size:40px}
+  h2{font-size:27px}
+  .xv{font-size:62px}
+  .pagina{padding:30px 18px}
 }
 </style>
 </head>
@@ -439,354 +338,210 @@ h2{
 <body>
 
 <!-- DESTELLOS -->
-<div class="sparkle s1"></div>
-<div class="sparkle s2"></div>
-<div class="sparkle s3"></div>
-<div class="sparkle s4"></div>
-<div class="sparkle s5"></div>
-<div class="sparkle s6"></div>
+<div class="sparkle" style="top:10%;left:15%;"></div>
+<div class="sparkle" style="top:25%;left:80%;animation-delay:.5s;"></div>
+<div class="sparkle" style="top:60%;left:10%;animation-delay:1s;"></div>
+<div class="sparkle" style="top:75%;left:88%;animation-delay:1.5s;"></div>
+<div class="sparkle" style="top:45%;left:50%;animation-delay:.8s;"></div>
+<div class="sparkle" style="top:85%;left:35%;animation-delay:1.8s;"></div>
 
+<!-- SOBRE -->
+<div id="pantallaSobre">
+  <div class="sobre" id="sobre" onclick="abrirSobre()">
+
+    <div class="cuerpoSobre"></div>
+
+    <div class="tapa"></div>
+
+    <div class="sello">✦</div>
+
+    <div class="textoSobre">
+      Toca el sobre para abrir mi invitación
+    </div>
+
+  </div>
+</div>
+
+<!-- INVITACIÓN -->
+<div id="invitacion">
 
 <div class="contenedor">
 
-<!-- ================= SOBRE ================= -->
-
-<section class="pantalla-sobre" id="pantallaSobre">
-
-    <div class="sobre-area" onclick="abrirSobre()">
-
-        <div class="frase">
-            UNA INVITACIÓN ESPECIAL
-        </div>
-
-        <div class="sobre" id="sobre">
-
-            <div class="cuerpo"></div>
-
-            <div class="tapa"></div>
-
-            <div class="sello">
-                ✦
-            </div>
-
-        </div>
-
-        <div class="toca">
-            TOCA EL SOBRE PARA ABRIR
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= INVITACIÓN ================= -->
-
-<main class="invitacion" id="invitacion">
-
-
 <!-- PÁGINA 1 -->
-
 <section class="pagina activa" id="pagina1">
 
-    <div class="mini">
-        Mis XV años
-    </div>
+  <div class="adornito">✦ ✧ ✦</div>
 
-    <h1>Arianis</h1>
+  <div class="nombre">ARIANIS</div>
 
-    <div class="flor">✦</div>
+  <div class="xv">XV</div>
 
-    <p class="texto">
-        Hay momentos que se quedan para siempre
-        en el corazón...
-    </p>
+  <h2>Una noche para recordar</h2>
 
-    <div class="divisor"></div>
+  <p>
+    Hay momentos que se convierten en recuerdos
+    para toda la vida...
+  </p>
 
-    <p class="texto">
-        Y quiero compartir uno de los momentos
-        más especiales de mi vida contigo.
-    </p>
+  <p>
+    Y me encantaría compartir uno de los más
+    especiales contigo.
+  </p>
 
-    <div class="numero">
-        15
-    </div>
+  <div class="decoracion">✦ ✦ ✦</div>
 
-    <button class="boton dorado" onclick="siguientePagina()">
-        CONTINUAR ✦
-    </button>
+  <div class="botones">
+    <button onclick="mostrarPagina(2)">CONTINUAR ✨</button>
+  </div>
 
 </section>
 
 
 <!-- PÁGINA 2 -->
-
 <section class="pagina" id="pagina2">
 
-    <div class="mini">
-        Con mucho cariño
-    </div>
+  <div class="adornito">❦</div>
 
-    <h2>
-        Te invito a celebrar
-    </h2>
+  <h2>Con mucho cariño...</h2>
 
-    <div class="nombre">
-        Mis XV
-    </div>
+  <p>
+    Quiero invitarte a celebrar conmigo
+    una noche llena de alegría, sueños,
+    momentos especiales y personas que
+    hacen mi vida más bonita.
+  </p>
 
-    <div class="divisor"></div>
+  <p>
+    Tu presencia será uno de los regalos
+    más especiales de esta noche.
+  </p>
 
-    <p class="texto">
-        Será una noche llena de alegría,
-        momentos especiales y recuerdos
-        que guardaré siempre en mi corazón.
-    </p>
-
-    <div class="navegacion">
-
-        <button class="boton" onclick="paginaAnterior()">
-            ← ATRÁS
-        </button>
-
-        <button class="boton dorado" onclick="siguientePagina()">
-            CONTINUAR →
-        </button>
-
-    </div>
+  <div class="botones">
+    <button onclick="mostrarPagina(1)">← Atrás</button>
+    <button onclick="mostrarPagina(3)">Continuar ✨</button>
+  </div>
 
 </section>
 
 
 <!-- PÁGINA 3 -->
-
 <section class="pagina" id="pagina3">
 
-    <div class="mini">
-        Reserva la fecha
-    </div>
+  <div class="adornito">✦</div>
 
-    <h2>
-        Una noche especial
-    </h2>
+  <h2>Reserva esta fecha</h2>
 
-    <div class="dato">
-        <strong>📅 Fecha</strong><br>
-        11 de octubre de 2026
-    </div>
+  <div class="detalle">
+    <div class="icono">📅</div>
+    <strong>10 de octubre de 2026</strong>
+  </div>
 
-    <div class="dato">
-        <strong>🕐 Hora</strong><br>
-        6:00 PM
-    </div>
+  <div class="detalle">
+    <div class="icono">🕞</div>
+    <strong>3:30 PM</strong>
+  </div>
 
-    <div class="dato">
-        <strong>📍 Lugar</strong><br>
-        Próximamente
-    </div>
+  <div class="detalle">
+    <div class="icono">📍</div>
+    <strong>Urbanización La Melissa</strong><br>
+    Salón Comunal
+  </div>
 
-    <div class="divisor"></div>
+  <div class="lluvia">
 
-    <p class="pequeno">
-        Será un honor contar con tu presencia.
+    <div class="sobreIcono">💌</div>
+
+    <strong>Lluvia de sobres</strong>
+
+    <p>
+      Si deseas tener un detalle conmigo,
+      puedes hacerlo mediante lluvia de sobres.
     </p>
 
-    <div class="navegacion">
+  </div>
 
-        <button class="boton" onclick="paginaAnterior()">
-            ← ATRÁS
-        </button>
-
-        <button class="boton dorado" onclick="siguientePagina()">
-            CONTINUAR →
-        </button>
-
-    </div>
+  <div class="botones">
+    <button onclick="mostrarPagina(2)">← Atrás</button>
+    <button onclick="mostrarPagina(4)">Continuar ✨</button>
+  </div>
 
 </section>
 
 
-<!-- ================= PÁGINA 4 ================= -->
-
+<!-- PÁGINA 4 - CONFIRMACIÓN -->
 <section class="pagina" id="pagina4">
 
-    <div class="mini">
-        Tu presencia es importante
-    </div>
+  <div class="adornito">✦ 💚 ✦</div>
 
-    <h2>
-        ¿Nos acompañas?
-    </h2>
+  <h2>¿Nos acompañas?</h2>
 
-    <p class="texto">
-        Por favor confirma tu asistencia
-        para poder compartir contigo
-        este momento tan especial.
+  <p>
+    Será una noche muy especial y me hará
+    muchísima ilusión contar contigo.
+  </p>
+
+  <p>
+    Por favor, confirma tu asistencia para
+    poder compartir juntos esta noche mágica.
+  </p>
+
+  <div class="botones">
+
+    <a
+      class="boton botonDorado"
+      href="https://wa.me/50662999872?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%2015%20a%C3%B1os%20de%20Arianis%F0%9F%92%9A%E2%9C%A8"
+      target="_blank">
+      💚 Confirmar asistencia
+    </a>
+
+  </div>
+
+  <div class="botones">
+    <button onclick="mostrarPagina(3)">← Atrás</button>
+    <button onclick="mostrarPagina(5)">📸 Ver álbum</button>
+  </div>
+
+</section>
+
+
+<!-- PÁGINA 5 - ÁLBUM -->
+<section class="pagina" id="pagina5">
+
+  <div class="adornito">✦ 📸 ✦</div>
+
+  <h2>Recuerdos de una noche mágica</h2>
+
+  <div class="album">
+
+    <div class="albumIcono">📸✨</div>
+
+    <p class="fraseAlbum">
+      “Cada fotografía guarda un instante,
+      y quiero que juntos llenemos este álbum
+      con todos los recuerdos de esta noche tan especial.”
+    </p>
+
+    <p>
+      Comparte tus fotos, risas y momentos favoritos
+      de esta celebración en nuestro álbum de recuerdos.
     </p>
 
     <div class="botones">
 
-        <!-- 💚 CONFIRMACIÓN POR WHATSAPP -->
-        <a
-            class="boton dorado"
-            href="https://wa.me/50662999872?text=Hola%20Arianis%20%F0%9F%92%9A%20Quiero%20confirmar%20mi%20asistencia%20a%20tus%20XV."
-            target="_blank"
-            rel="noopener noreferrer">
-            💌 CONFIRMAR ASISTENCIA
-        </a>
-
-        <!-- 📸 ÁLBUM DE RECUERDOS -->
-        <a
-            class="boton"
-            href="https://photos.app.goo.gl/PdC8juV8uxDQnrWB8"
-            target="_blank"
-            rel="noopener noreferrer">
-            📸 ÁLBUM DE RECUERDOS
-        </a>
+      <a
+        class="boton botonDorado"
+        href="https://photos.app.goo.gl/PdC8juV8uxDQnrWB8"
+        target="_blank">
+        📸 Compartir fotos
+      </a>
 
     </div>
 
-    <div class="navegacion">
+  </div>
 
-        <button class="boton" onclick="paginaAnterior()">
-            ← ATRÁS
-        </button>
+  <div class="botones">
+    <button onclick="mostrarPagina(4)">← Confirmación</button>
+    <button onclick="mostrarPagina(1)">Inicio ✨</button>
+  </div>
 
-    </div>
-
-</section>
-
-</main>
-
-</div>
-
-
-<!-- ================= BOTÓN MÚSICA ================= -->
-
-<button
-    class="musica"
-    id="botonMusica"
-    onclick="toggleMusica()">
-    🎵
-</button>
-
-<audio id="musicaAudio" loop src="musica.mp3"></audio>
-
-
-<script>
-
-/* ================= SOBRE ================= */
-
-function abrirSobre(){
-
-    const sobre = document.getElementById("sobre");
-    const pantalla = document.getElementById("pantallaSobre");
-    const invitacion = document.getElementById("invitacion");
-
-    if(sobre.classList.contains("abierto")){
-        return;
-    }
-
-    sobre.classList.add("abierto");
-
-    setTimeout(function(){
-
-        pantalla.classList.add("oculto");
-
-        setTimeout(function(){
-
-            invitacion.classList.add("visible");
-
-        },500);
-
-    },750);
-}
-
-
-/* ================= PÁGINAS ================= */
-
-let paginaActual = 1;
-
-const totalPaginas = 4;
-
-function mostrarPagina(numero){
-
-    for(let i=1;i<=totalPaginas;i++){
-
-        const pagina = document.getElementById("pagina"+i);
-
-        if(i === numero){
-            pagina.classList.add("activa");
-        }else{
-            pagina.classList.remove("activa");
-        }
-    }
-
-    paginaActual = numero;
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-}
-
-function siguientePagina(){
-
-    if(paginaActual < totalPaginas){
-        mostrarPagina(paginaActual + 1);
-    }
-}
-
-function paginaAnterior(){
-
-    if(paginaActual > 1){
-        mostrarPagina(paginaActual - 1);
-    }
-}
-
-
-/* ================= MÚSICA ================= */
-
-let reproduciendo = false;
-
-function toggleMusica(){
-
-    const audio = document.getElementById("musicaAudio");
-    const boton = document.getElementById("botonMusica");
-
-    if(reproduciendo){
-
-        audio.pause();
-        boton.textContent = "🎵";
-        reproduciendo = false;
-
-    }else{
-
-        audio.play()
-        .then(function(){
-
-            boton.textContent = "⏸️";
-            reproduciendo = true;
-
-        })
-        .catch(function(){
-
-            alert("Para usar la música, sube un archivo llamado musica.mp3 a tu repositorio de GitHub.");
-
-        });
-    }
-}
-
-document.getElementById("musicaAudio").addEventListener("ended",function(){
-
-    reproduciendo = false;
-
-    document.getElementById("botonMusica").textContent = "🎵";
-
-});
-
-</script>
-
-</body>
-</html>
+  <div class="decor
