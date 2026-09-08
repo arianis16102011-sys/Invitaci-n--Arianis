@@ -3,715 +3,652 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mis XV - Arianis</title>
+<title>Mis XV — Arianis</title>
 
 <style>
-*{
-  box-sizing:border-box;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap');
+
+* {
+    box-sizing: border-box;
 }
 
-html,body{
-  margin:0;
-  padding:0;
-  width:100%;
-  min-height:100%;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
 }
 
-body{
-  font-family:Georgia,"Times New Roman",serif;
-  background:#e8f3df;
-  color:#4d5f42;
-  overflow-x:hidden;
+body {
+    background: #edf4e8;
+    color: #3d463b;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
 }
 
-/* =========================
-   PÁGINAS
-========================= */
+/* FONDO */
 
-.screen{
-  min-height:100vh;
-  width:100%;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:25px 15px;
-  position:relative;
-  overflow:hidden;
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(193,168,91,.10), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(193,168,91,.08), transparent 25%);
 }
 
-.screen.active{
-  display:flex;
-  animation:entrada 1s ease;
+/* PANTALLAS */
+
+.pagina {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    padding: 35px 22px;
+    align-items: center;
+    justify-content: center;
 }
 
-.contenido{
-  width:min(92vw,620px);
-  padding:34px 22px;
-  border:2px solid #c6a85b;
-  border-radius:28px;
-  background:rgba(255,255,255,.38);
-  box-shadow:0 0 35px rgba(198,168,91,.25);
-  position:relative;
-  z-index:5;
+.pagina.activa {
+    display: flex;
+    animation: aparecer .7s ease;
 }
 
-h1{
-  color:#a88b3e;
-  font-size:clamp(42px,12vw,75px);
-  margin:10px 0;
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-h2{
-  color:#a88b3e;
-  font-size:clamp(26px,7vw,43px);
+/* SOBRE */
+
+#inicio {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
-p{
-  font-size:18px;
-  line-height:1.7;
+.sobre-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.dorado{
-  color:#a88b3e;
+.sobre-caja {
+    width: min(330px, 86vw);
+    text-align: center;
 }
 
-/* =========================
-   CORAZONES VERDES
-========================= */
-
-.corazon{
-  font-size:62px;
-  display:block;
-  margin:0 auto 12px;
-  animation:latido 1.7s infinite;
+.sobre {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.55;
+    background: #f8faf4;
+    border: 1px solid #c6aa60;
+    box-shadow: 0 12px 35px rgba(66,70,58,.13);
+    cursor: pointer;
 }
 
-/* Corazones decorativos */
-.corazon-decorativo{
-  position:fixed;
-  color:#6f9f62;
-  font-size:22px;
-  z-index:2;
-  pointer-events:none;
-  animation:flotar 4s ease-in-out infinite;
+.sobre::before,
+.sobre::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    height: 70%;
+    background: #e5eddd;
+    z-index: 1;
 }
 
-.c1{left:7%;top:18%;}
-.c2{right:8%;top:25%;animation-delay:1s;}
-.c3{left:12%;bottom:20%;animation-delay:1.7s;}
-.c4{right:12%;bottom:16%;animation-delay:2.4s;}
-
-/* =========================
-   SOBRE
-========================= */
-
-.sobre-area{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin:30px auto;
+.sobre::before {
+    left: 0;
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
 }
 
-.sobre-caja{
-  width:min(310px,82vw);
-  height:210px;
-  position:relative;
-  margin:0 auto;
-  cursor:pointer;
-  perspective:900px;
+.sobre::after {
+    right: 0;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }
 
-.sobre{
-  width:100%;
-  height:100%;
-  position:relative;
-  background:#f8f3df;
-  border:3px solid #c6a85b;
-  border-radius:10px;
-  box-shadow:0 12px 30px rgba(0,0,0,.18);
-  overflow:visible;
+.solapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65%;
+    background: #eef4e8;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    z-index: 3;
+    border-top: 1px solid rgba(198,170,96,.5);
 }
 
-/* Parte del sobre */
-.sobre:before{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:0;
-  width:100%;
-  height:100%;
-  background:linear-gradient(
-    145deg,
-    transparent 49%,
-    #d8c47e 50%,
-    transparent 51%
-  );
-  opacity:.45;
+.sello {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #6f8068;
+    border: 2px solid #c6aa60;
+    color: #fffdf6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    z-index: 5;
 }
 
-/* Solapa */
-.solapa{
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
-  height:108px;
-  background:#eee5c8;
-  border-bottom:3px solid #c6a85b;
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  transform-origin:top center;
-  transition:transform 1s ease;
-  z-index:6;
+.texto-sobre {
+    margin-top: 25px;
+    color: #7a6840;
+    letter-spacing: 2px;
+    font-size: 12px;
+    text-transform: uppercase;
 }
 
-.sobre.abierto .solapa{
-  transform:rotateX(180deg);
+.nombre-sobre {
+    margin-top: 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: #52604d;
 }
 
-/* Corazón verde del sello */
-.sello{
-  position:absolute;
-  left:50%;
-  top:108px;
-  transform:translate(-50%,-50%);
-  width:64px;
-  height:64px;
-  border-radius:50%;
-  background:#76a968;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:31px;
-  z-index:8;
-  box-shadow:0 4px 14px rgba(0,0,0,.2);
+/* TARJETAS */
+
+.tarjeta {
+    width: min(650px, 94vw);
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(198,170,96,.65);
+    padding: 42px 25px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(65,72,60,.10);
+    position: relative;
 }
 
-.instruccion{
-  color:#668957;
-  font-size:19px;
-  margin-top:8px;
-  animation:pulso 1.8s infinite;
+.tarjeta::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(198,170,96,.28);
+    pointer-events: none;
 }
 
-/* =========================
-   DESTELLOS
-========================= */
+/* TIPOGRAFÍA */
 
-.destello{
-  position:fixed;
-  width:8px;
-  height:8px;
-  background:#d8bd61;
-  border-radius:50%;
-  pointer-events:none;
-  z-index:1;
-  animation:destellar 2.5s ease-in-out infinite;
+.pequeno {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9a8150;
+    margin-bottom: 12px;
 }
 
-.destello:after{
-  content:"✦";
-  position:absolute;
-  left:-5px;
-  top:-11px;
-  color:#c6a85b;
-  font-size:17px;
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 14vw, 82px);
+    font-weight: 500;
+    color: #53614e;
+    margin: 0;
+    line-height: .9;
 }
 
-.d1{left:8%;top:13%;}
-.d2{left:86%;top:17%;animation-delay:.5s;}
-.d3{left:16%;top:70%;animation-delay:1s;}
-.d4{left:87%;top:72%;animation-delay:1.5s;}
-.d5{left:48%;top:8%;animation-delay:.8s;}
-.d6{left:62%;top:88%;animation-delay:1.8s;}
-.d7{left:30%;top:90%;animation-delay:1.2s;}
-.d8{left:72%;top:42%;animation-delay:2s;}
-
-/* =========================
-   BOTONES
-========================= */
-
-.boton{
-  border:2px solid #b79745;
-  background:#fffdf5;
-  color:#7b6632;
-  border-radius:30px;
-  padding:14px 28px;
-  font-size:18px;
-  font-family:Georgia,"Times New Roman",serif;
-  cursor:pointer;
-  margin-top:20px;
-  box-shadow:0 5px 18px rgba(0,0,0,.12);
-  transition:transform .25s;
+h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 10vw, 60px);
+    font-weight: 500;
+    color: #53614e;
+    margin: 5px 0 18px;
 }
 
-.boton:active{
-  transform:scale(.96);
+h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: #8b7443;
+    font-weight: 500;
 }
 
-/* =========================
-   MÚSICA
-========================= */
-
-.musica{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  z-index:30;
-  width:53px;
-  height:53px;
-  border-radius:50%;
-  border:2px solid #c6a85b;
-  background:#fffdf5;
-  color:#8c7130;
-  font-size:22px;
-  cursor:pointer;
-  box-shadow:0 5px 18px rgba(0,0,0,.15);
+p {
+    line-height: 1.8;
+    font-size: 14px;
+    color: #596153;
+    max-width: 520px;
+    margin: 12px auto;
 }
 
-/* =========================
-   ANIMACIONES
-========================= */
+/* DETALLES DORADOS */
 
-@keyframes entrada{
-  from{
-    opacity:0;
-    transform:scale(.94) translateY(20px);
-  }
-  to{
-    opacity:1;
-    transform:scale(1) translateY(0);
-  }
+.adorno {
+    color: #b79a52;
+    font-size: 18px;
+    letter-spacing: 8px;
+    margin: 18px 0;
 }
 
-@keyframes latido{
-  0%,100%{
-    transform:scale(1);
-  }
-  50%{
-    transform:scale(1.14);
-  }
+.linea {
+    width: 80px;
+    height: 1px;
+    background: #c6aa60;
+    margin: 18px auto;
 }
 
-@keyframes pulso{
-  0%,100%{
-    opacity:.65;
-  }
-  50%{
-    opacity:1;
-    transform:scale(1.04);
-  }
+/* FECHA */
+
+.fecha {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: #53614e;
+    margin: 25px 0 8px;
 }
 
-@keyframes destellar{
-  0%,100%{
-    opacity:.15;
-    transform:scale(.5);
-  }
-  50%{
-    opacity:1;
-    transform:scale(1.8);
-  }
+.hora {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #8b7443;
 }
 
-@keyframes flotar{
-  0%,100%{
-    transform:translateY(0);
-    opacity:.55;
-  }
-  50%{
-    transform:translateY(-14px);
-    opacity:1;
-  }
+/* BOTONES */
+
+.boton {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 13px 27px;
+    border: 1px solid #b79a52;
+    background: transparent;
+    color: #6d5b37;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.boton:hover {
+    background: #b79a52;
+    color: white;
+}
+
+/* BOTONES FINALES */
+
+.botones-finales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* BOTÓN MÚSICA */
+
+.musica {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid #c6aa60;
+    background: rgba(255,255,255,.88);
+    color: #806b3e;
+    cursor: pointer;
+    z-index: 20;
+}
+
+/* PEQUEÑOS DETALLES */
+
+.hoja {
+    position: fixed;
+    color: rgba(103,126,96,.16);
+    font-size: 35px;
+    pointer-events: none;
+}
+
+.hoja1 {
+    top: 8%;
+    left: 5%;
+}
+
+.hoja2 {
+    bottom: 7%;
+    right: 5%;
+    transform: rotate(180deg);
+}
+
+/* MÓVIL */
+
+@media (max-width: 500px) {
+
+    .pagina {
+        padding: 25px 16px;
+    }
+
+    .tarjeta {
+        padding: 38px 20px;
+    }
+
+    .sobre-caja {
+        width: min(300px, 84vw);
+    }
+
+    p {
+        font-size: 13px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- CORAZONES VERDES -->
-<div class="corazon-decorativo c1">💚</div>
-<div class="corazon-decorativo c2">💚</div>
-<div class="corazon-decorativo c3">💚</div>
-<div class="corazon-decorativo c4">💚</div>
-
-<!-- DESTELLOS -->
-<div class="destello d1"></div>
-<div class="destello d2"></div>
-<div class="destello d3"></div>
-<div class="destello d4"></div>
-<div class="destello d5"></div>
-<div class="destello d6"></div>
-<div class="destello d7"></div>
-<div class="destello d8"></div>
+<!-- DETALLES SUTILES -->
+<div class="hoja hoja1">❧</div>
+<div class="hoja hoja2">❧</div>
 
 <!-- MÚSICA -->
 <audio id="musica" loop>
-  <source src="musica.mp3" type="audio/mpeg">
+    <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<button class="musica" onclick="alternarMusica()">🎵</button>
+<button class="musica" onclick="alternarMusica()">♫</button>
 
 
-<!-- =========================
-     SOBRE
-========================= -->
+<!-- SOBRE -->
 
-<section class="screen active" id="sobre">
-
-  <div class="contenido">
-
-    <div class="corazon">💚</div>
-
-    <h2>Una invitación especial...</h2>
+<section id="inicio" class="pagina activa">
 
     <div class="sobre-area">
 
-      <div class="sobre-caja" onclick="abrirSobre()">
+        <div class="sobre-caja">
 
-        <div class="sobre" id="sobreCaja">
+            <div class="sobre" onclick="abrirSobre()">
 
-          <div class="solapa"></div>
+                <div class="solapa"></div>
 
-          <div class="sello">💚</div>
+                <div class="sello">✦</div>
+
+            </div>
+
+            <div class="texto-sobre">
+                Toca para abrir
+            </div>
+
+            <div class="nombre-sobre">
+                Mis XV · Arianis
+            </div>
 
         </div>
 
-      </div>
+    </div>
+
+</section>
+
+
+<!-- PÁGINA 1 -->
+
+<section id="pagina1" class="pagina">
+
+    <div class="tarjeta">
+
+        <div class="pequeno">
+            Una noche para recordar
+        </div>
+
+        <h1>Arianis</h1>
+
+        <div class="adorno">✦ ─ ✦ ─ ✦</div>
+
+        <p>
+            Con mucha alegría quiero invitarte
+            a celebrar conmigo una fecha
+            muy especial.
+        </p>
+
+        <h2>Mis XV</h2>
+
+        <div class="linea"></div>
+
+        <button class="boton" onclick="siguiente(2)">
+            Continuar ✨
+        </button>
 
     </div>
 
-    <div class="instruccion">
-      💚 Toca para abrir 💚
+</section>
+
+
+<!-- PÁGINA 2 -->
+
+<section id="pagina2" class="pagina">
+
+    <div class="tarjeta">
+
+        <div class="pequeno">
+            Estás cordialmente invitado/a
+        </div>
+
+        <h2>Te espero</h2>
+
+        <div class="adorno">✦</div>
+
+        <p>
+            Será una noche llena de momentos
+            especiales, sonrisas y recuerdos
+            que guardaré para siempre.
+        </p>
+
+        <p>
+            Me encantará compartir este día
+            tan importante contigo.
+        </p>
+
+        <button class="boton" onclick="siguiente(3)">
+            Continuar ✨
+        </button>
+
     </div>
 
-  </div>
+</section>
+
+
+<!-- PÁGINA 3 -->
+
+<section id="pagina3" class="pagina">
+
+    <div class="tarjeta">
+
+        <div class="pequeno">
+            Reserva la fecha
+        </div>
+
+        <div class="fecha">
+            Sábado · 10 de octubre
+        </div>
+
+        <div class="linea"></div>
+
+        <h3>3:30 p. m.</h3>
+
+        <p>
+            Salón comunal<br>
+            Urbanización La Melissa
+        </p>
+
+        <div class="adorno">✦</div>
+
+        <button class="boton" onclick="siguiente(4)">
+            Continuar ✨
+        </button>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
-     PORTADA
-========================= -->
+<!-- PÁGINA 4 -->
 
-<section class="screen" id="pagina1">
+<section id="pagina4" class="pagina">
 
-  <div class="contenido">
+    <div class="tarjeta">
 
-    <div class="corazon">💚</div>
+        <div class="pequeno">
+            Con cariño
+        </div>
 
-    <p class="dorado">
-      Con mucha ilusión quiero compartir contigo...
-    </p>
+        <h2>Gracias por acompañarme</h2>
 
-    <h1>Mis XV</h1>
+        <div class="adorno">✦ ─ ✦ ─ ✦</div>
 
-    <h2>Arianis</h2>
+        <p>
+            Gracias por formar parte de mi vida
+            y por acompañarme en este momento
+            tan especial.
+        </p>
 
-    <p>✨ Una noche para recordar ✨</p>
+        <p>
+            Espero que esta celebración se
+            convierta en un recuerdo bonito
+            para todos.
+        </p>
 
-    <button class="boton" onclick="siguiente(2)">
-      CONTINUAR ✨
-    </button>
+        <button class="boton" onclick="siguiente(5)">
+            Continuar ✨
+        </button>
 
-  </div>
-
-</section>
-
-
-<!-- =========================
-     INVITACIÓN
-========================= -->
-
-<section class="screen" id="pagina2">
-
-  <div class="contenido">
-
-    <div class="corazon">💚</div>
-
-    <h2>Estás invitado</h2>
-
-    <p>
-      Hay momentos que se convierten en recuerdos
-      para toda la vida, y quiero compartir uno de
-      los más especiales contigo.
-    </p>
-
-    <p class="dorado">
-      💚 Te espero para celebrar mis XV 💚
-    </p>
-
-    <button class="boton" onclick="siguiente(3)">
-      CONTINUAR ✨
-    </button>
-
-  </div>
+    </div>
 
 </section>
 
 
-<!-- =========================
-     FECHA
-========================= -->
+<!-- PÁGINA 5 -->
 
-<section class="screen" id="pagina3">
+<section id="pagina5" class="pagina">
 
-  <div class="contenido">
+    <div class="tarjeta">
 
-    <div class="corazon">💚</div>
+        <div class="pequeno">
+            Un pequeño detalle
+        </div>
 
-    <h2>La fecha</h2>
+        <h2>Lluvia de sobres</h2>
 
-    <p class="dorado">
-      10 de octubre de 2026
-    </p>
+        <div class="adorno">✦</div>
 
-    <p>
-      🕞 3:30 p.m.
-    </p>
+        <p>
+            Tu presencia es el mejor regalo.
+        </p>
 
-    <p>
-      📍 Salón comunal<br>
-      Urbanización La Melissa
-    </p>
+        <p>
+            Si deseas obsequiarme algo,
+            agradezco mucho tu detalle
+            en forma de lluvia de sobres.
+        </p>
 
-    <button class="boton" onclick="siguiente(4)">
-      CONTINUAR ✨
-    </button>
+        <button class="boton" onclick="siguiente(6)">
+            Continuar ✨
+        </button>
 
-  </div>
-
-</section>
-
-
-<!-- =========================
-     AGRADECIMIENTO
-========================= -->
-
-<section class="screen" id="pagina4">
-
-  <div class="contenido">
-
-    <div class="corazon">💚</div>
-
-    <h2>Gracias por ser parte</h2>
-
-    <p>
-      Tu presencia hará que este día sea todavía
-      más especial. Gracias por acompañarme y
-      formar parte de este recuerdo que guardaré
-      siempre en mi corazón.
-    </p>
-
-    <p class="dorado">
-      Con cariño,<br>
-      Arianis 💚
-    </p>
-
-    <button class="boton" onclick="siguiente(5)">
-      CONTINUAR ✨
-    </button>
-
-  </div>
+    </div>
 
 </section>
 
 
-<!-- =========================
-     DETALLES
-========================= -->
+<!-- PÁGINA 6 -->
 
-<section class="screen" id="pagina5">
+<section id="pagina6" class="pagina">
 
-  <div class="contenido">
+    <div class="tarjeta">
 
-    <div class="corazon">💚</div>
+        <div class="pequeno">
+            Antes de despedirnos
+        </div>
 
-    <h2>Un pequeño detalle</h2>
+        <h2>¿Nos acompañas?</h2>
 
-    <p>
-      🎁 <strong>Lluvia de sobres</strong>
-    </p>
+        <div class="adorno">✦</div>
 
-    <p>
-      Lo más importante para mí es compartir
-      este momento contigo. ✨
-    </p>
+        <p>
+            Confirma tu asistencia y comparte
+            tus fotografías para que juntos
+            podamos guardar estos recuerdos.
+        </p>
 
-    <button class="boton" onclick="siguiente(6)">
-      CONTINUAR ✨
-    </button>
+        <div class="botones-finales">
 
-  </div>
+            <a
+                class="boton"
+                href="https://wa.me/50662999872"
+                target="_blank">
+                💌 Confirmar asistencia
+            </a>
 
-</section>
+            <a
+                class="boton"
+                href="https://photos.app.goo.gl/PdC8juV8uxDQnrWB8"
+                target="_blank">
+                📸 Álbum de recuerdos
+            </a>
 
+        </div>
 
-<!-- =========================
-     CONFIRMACIÓN
-========================= -->
+        <div class="adorno">
+            ✦
+        </div>
 
-<section class="screen" id="pagina6">
+        <div class="pequeno">
+            Arianis · Mis XV · 2026
+        </div>
 
-  <div class="contenido">
-
-    <div class="corazon">💚</div>
-
-    <h2>¿Nos acompañas?</h2>
-
-    <p>
-      Me encantaría saber si podrás compartir
-      conmigo esta noche tan especial. 💚
-    </p>
-
-    <button
-      class="boton"
-      onclick="window.open(
-      'https://wa.me/50662999872?text=Hola%20Arianis%20💗%20quiero%20confirmar%20mi%20asistencia%20a%20tus%20XV.',
-      '_blank')">
-
-      💌 CONFIRMAR ASISTENCIA
-
-    </button>
-
-    <br>
-
-    <button
-      class="boton"
-      onclick="window.open(
-      'https://photos.app.goo.gl/PdC8juV8uxDQnrWB8',
-      '_blank')">
-
-      📸 ÁLBUM DE RECUERDOS
-
-    </button>
-
-    <p class="dorado">
-      ✨ Te espero ✨
-    </p>
-
-  </div>
+    </div>
 
 </section>
 
 
 <script>
 
-let musicaSonando = false;
+const musica = document.getElementById("musica");
 
-/* Abrir sobre */
+function abrirSobre() {
 
-function abrirSobre(){
+    document.getElementById("inicio").classList.remove("activa");
+    document.getElementById("pagina1").classList.add("activa");
 
-  const caja = document.getElementById("sobreCaja");
-
-  caja.classList.add("abierto");
-
-  setTimeout(function(){
-
-    mostrarPagina(1);
-
-    reproducirMusica();
-
-  },900);
+    musica.play().catch(() => {});
 
 }
 
+function siguiente(numero) {
 
-/* Cambiar página */
+    document.querySelectorAll(".pagina").forEach(function(pagina) {
+        pagina.classList.remove("activa");
+    });
 
-function mostrarPagina(numero){
-
-  document.querySelectorAll(".screen").forEach(function(pagina){
-
-    pagina.classList.remove("active");
-
-  });
-
-  const pagina = document.getElementById(
-    numero === 0 ? "sobre" : "pagina" + numero
-  );
-
-  if(pagina){
-
-    pagina.classList.add("active");
+    document.getElementById("pagina" + numero).classList.add("activa");
 
     window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-  }
-
-}
-
-
-/* Continuar */
-
-function siguiente(numero){
-
-  mostrarPagina(numero);
-
-}
-
-
-/* Música */
-
-function reproducirMusica(){
-
-  const audio = document.getElementById("musica");
-
-  audio.play()
-    .then(function(){
-
-      musicaSonando = true;
-
-    })
-    .catch(function(){
-
-      musicaSonando = false;
-
+        top: 0,
+        behavior: "smooth"
     });
 
 }
 
+function alternarMusica() {
 
-/* Botón de música */
-
-function alternarMusica(){
-
-  const audio = document.getElementById("musica");
-
-  if(musicaSonando){
-
-    audio.pause();
-
-    musicaSonando = false;
-
-  }else{
-
-    audio.play()
-      .then(function(){
-
-        musicaSonando = true;
-
-      })
-      .catch(function(){
-
-        alert(
-          "Agrega el archivo musica.mp3 junto a tu index.html en GitHub."
-        );
-
-      });
-
-  }
+    if (musica.paused) {
+        musica.play().catch(() => {});
+    } else {
+        musica.pause();
+    }
 
 }
 
 </script>
 
 </body>
-  </html>
+</html>
